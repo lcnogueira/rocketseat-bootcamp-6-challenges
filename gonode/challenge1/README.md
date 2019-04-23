@@ -1,11 +1,16 @@
-# Descrição do Desafio
-Configure uma aplicação utilizando ExpressJS, Nunjucks, EditorConfig e ESLint.
+# Challenge 1 (First Module)
 
-## Rotas
-* `/`: Rota inicial que renderiza uma página com um formulário com um único campo age que representa a idade do usuário;
-* `/check` : Rota chamada pelo formulário da página inicial via método POST que checa se a idade do usuário é maior que 18 e o redireciona para a rota /major , caso contrário o redireciona para a rota /minor (Lembre de enviar a idade como Query Param no redirecionamento);
-* `/major` : Rota que renderiza uma página com o texto: Você é maior de idade e possui x anos , onde x deve ser o valor informado no input do formulário;
-* `/minor` : Rota que renderiza uma página com o texto: Você é menor de idade e possui x anos , onde x deve ser o valor informado no input do formulário;
+## Description
+Create an app by using ExpressJS, Nunjucks, EditorConfig e ESLint.
 
-## Middlewares
-Deve haver um middleware que é chamado nas rotas /major e /minor e checa se a informação de idade não está presente nos Query Params. Se essa informação não existir deve redirecionar o usuário para a página inicial com o formulário, caso contrário o middleware deve apenas continuar com o fluxo normal.
+### Routes
+* `/`: starter route. It renders a page with a form which has just a field that represents the user age.
+* `/check`: a route that is invoked by the form in the starter page through `POST` method. It checks the user age and redirects him to `/minor` (in case he is less than 18 years old) or `major` (in case he is older) accordingly to his age;
+* `/major`: it renders a page with the text `You are of age and you are x years old`. `x` should be the value inserted through the form input;
+* `/minor`: it renders a page with the text `You are underage and you are x years old`. `x` should be the value inserted through the form input.
+
+### Middlewares
+The `/major` and `/minor` routes should use middleware to check if the age info is available in the Query Params. If it doesn't exist, the middleware should redirect the user to the home page. By the other hand, in case the info exists, the middleware should keep the common flow.
+
+## How to test the app
+Run `npm start` in the root folder (`challenge1`).
