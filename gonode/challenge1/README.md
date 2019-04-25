@@ -15,3 +15,4 @@ The `/major` and `/minor` routes should use middleware to check if the age info 
 ## How to test the app
 1. Install the dependencies: `yarn install`
 2. Start the app: `yarn start`
+3. Visit `localhost:3000` :rocket:.

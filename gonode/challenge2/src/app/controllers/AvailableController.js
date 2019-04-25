@@ -20,8 +20,6 @@ class AvailableController {
       }
     });
 
-    console.log('appointments', appointments);
-
     // All POSSIBLE time spots
     const schedule = [
       '08:00',
