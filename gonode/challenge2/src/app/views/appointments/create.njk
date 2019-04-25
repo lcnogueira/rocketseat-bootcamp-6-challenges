@@ -1,0 +1,39 @@
+{% extends "_layouts/default.njk" %}
+
+{% block body %}
+  <div class="content">
+    <strong>Scheduling a spot</strong>
+    <div class="provider">
+      <div>
+        <img src="/files/{{provider.avatar}}" />
+        <strong>{{provider.name}}</strong>
+      </div>
+    </div>
+    <form action="/app/appointments/new/{{provider.id}}" method="post">
+      <input type="text" class="flatpickr" placeholder="Pick a date">
+
+      <div id="hours"></div>
+
+      <button type="submit">Schedule</button>
+      <a href="/app/dashboard" class="logout">Back to dashboard</a>
+    </form>
+  </div>
+
+  <script type="text/javascript">
+    flatpickr('.flatpickr', {
+      minDate: new Date(),
+      dateFormat: 'd/m/Y',
+      onChange: function(date){
+        fetch(`/app/available/{{provider.id}}?date=${date[0].getTime()}`)
+          .then(function(response){
+            {# Convert the response to html #}
+            response.text().then(function(html){
+              {# Append the html returned by the backend to the html #}
+              document.getElementById('hours').innerHTML = html
+            })
+          })
+      }
+    })
+  </script>
+{% endblock %}
+

@@ -13,4 +13,5 @@ Create an app by using ExpressJS, Nunjucks, EditorConfig e ESLint.
 The `/major` and `/minor` routes should use middleware to check if the age info is available in the Query Params. If it doesn't exist, the middleware should redirect the user to the home page. By the other hand, in case the info exists, the middleware should keep the common flow.
 
 ## How to test the app
-Run `npm start` in the root folder (`challenge1`).
+1. Install the dependencies: `yarn install`
+2. Start the app: `yarn start`

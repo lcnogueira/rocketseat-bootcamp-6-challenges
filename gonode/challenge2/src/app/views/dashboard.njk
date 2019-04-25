@@ -1,0 +1,29 @@
+{% extends "_layouts/default.njk" %}
+
+{% block body %}
+
+  <div class="content">
+      <div class="client-container">
+        <strong>Hi, {{ user.name }}</strong>
+        <img src="/files/{{ user.avatar }}" alt="Client Photo">
+      </div>
+      <p>Please, choose a professional from the list below</p>
+      {% include "_partials/flash.njk" %}
+      <ul class="providers">
+        {% for provider in providers %}
+        <li class="provider">
+          <div>
+            <img src="/files/{{provider.avatar}}" alt="Photo">
+            <strong>{{provider.name}}</strong>
+          </div>
+          <a href="/app/appointments/new/{{provider.id}}">+</a>
+        </li>
+        {% endfor %}
+      </ul>
+
+      {% if (user.provider === true) %}
+      <a href="/app/schedule" class="schedule">My scheduling</a>
+      {% endif %}
+      <a href="/app/logout" class="logout">Logout</a>
+  </div>
+{%endblock %}
