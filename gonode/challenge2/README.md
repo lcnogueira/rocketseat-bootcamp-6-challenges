@@ -28,3 +28,6 @@ database: 'db_name',
 ### Skills
 
 NodeJs, Express, Sequelize, Nunjucks, connect-loki, multer.
+
+### Preview
+You can preview the project [here](https://www.loom.com/share/3dd0dc2a321f44289bb7d39e2df3aea1).
