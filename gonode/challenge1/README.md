@@ -1,4 +1,4 @@
-# Challenge 1 (First Module)
+# Challenge 1 (First Node Module)
 
 ## Description
 Create an app by using ExpressJS, Nunjucks, EditorConfig e ESLint.
