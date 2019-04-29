@@ -27,4 +27,4 @@ database: 'db_name',
 
 ### Skills
 
-NodeJs, Express, Sequelize, Nunjucks, Json Web Token(jwt), multer
+NodeJs, Express, Sequelize, Nunjucks, connect-loki, multer.
