@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
 
+// Advertisement
 const Ad = new mongoose.Schema({
   title: {
     type: String,
@@ -18,6 +19,10 @@ const Ad = new mongoose.Schema({
   price: {
     type: Number,
     required: true
+  },
+  purchasedBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Purchase'
   },
   createdAt: {
     type: Date,

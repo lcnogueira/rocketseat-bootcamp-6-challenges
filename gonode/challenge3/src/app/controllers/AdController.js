@@ -2,7 +2,10 @@ const Ad = require('../models/Ad');
 
 class AdController {
   async index (req, res) {
-    const filters = {};
+    // Only returns an ad if purchaseBy is null
+    const filters = {
+      purchasedBy: null
+    };
 
     if (req.query.price_min || req.query.price_max) {
       filters.price = {};

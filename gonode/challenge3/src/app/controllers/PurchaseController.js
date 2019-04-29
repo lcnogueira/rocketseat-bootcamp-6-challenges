@@ -5,6 +5,12 @@ const PurchaseMail = require('../jobs/PurchaseMail');
 const Queue = require('../services/Queue');
 
 class PurchaseController {
+  async index (req, res) {
+    const purchases = await Purchase.find();
+
+    return res.json(purchases);
+  }
+
   async store (req, res) {
     const { ad, content } = req.body;
 
