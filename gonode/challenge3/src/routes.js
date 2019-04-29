@@ -33,11 +33,7 @@ routes.post(
   validate(validators.Ad),
   handle(controllers.AdController.store)
 );
-routes.put(
-  '/ads/:id',
-  validate(validators.Ad),
-  handle(controllers.AdController.update)
-);
+routes.put('/ads/:id', handle(controllers.AdController.update));
 routes.delete('/ads/:id', handle(controllers.AdController.destroy));
 
 /**

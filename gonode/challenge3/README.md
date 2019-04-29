@@ -22,3 +22,7 @@ You can use a tool like [Insomnia](https://insomnia.rest/) to make http requests
 ### Skills
 
 NodeJs, Express, Sentry, Redis and Kue, JWT, MongoDB, Nodemailer.
+
+### Preview
+
+You can preview the project [here](https://www.loom.com/share/34970b3227b5409c8476138a416b4fa0).
