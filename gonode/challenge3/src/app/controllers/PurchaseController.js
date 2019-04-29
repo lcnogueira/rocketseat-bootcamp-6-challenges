@@ -1,5 +1,6 @@
 const Ad = require('../models/Ad');
 const User = require('../models/User');
+const Purchase = require('../models/Purchase');
 const PurchaseMail = require('../jobs/PurchaseMail');
 const Queue = require('../services/Queue');
 
@@ -10,6 +11,12 @@ class PurchaseController {
     const purchaseAd = await Ad.findById(ad).populate('author');
     const user = await User.findById(req.userId);
 
+    const purchase = await Purchase.create({
+      user,
+      ad: purchaseAd,
+      content
+    });
+
     // Calls the queue
     Queue.create(PurchaseMail.key, {
       ad: purchaseAd,
@@ -17,7 +24,7 @@ class PurchaseController {
       content
     }).save();
 
-    return res.send();
+    return res.send(purchase);
   }
 }
 
