@@ -9,6 +9,7 @@ Here you can find all of the code I've developed for the Rocketseat Bootcamp cha
 
 - GoReact
   - [First Module - Environment and Concepts](goreact/challenge1)
+  - [Second Module - Github Compare App](goreact/challenge2)
 
 ## Get int touch!
 

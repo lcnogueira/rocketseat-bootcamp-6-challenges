@@ -18,16 +18,17 @@ export default class Main extends Component {
     repositoryError: false,
   };
 
-  async componentDidMount() {
-    const repositories = await getLocalRepos();
+  componentDidMount() {
+    const repositories = getLocalRepos();
     this.setState({ repositories });
   }
 
   removeRepo = async (id) => {
+    // Remove repo from the list
     const newList = this.state.repositories.filter(repo => repo.id !== id);
 
     // Save to localStorage
-    await saveLocalRepos(newList);
+    saveLocalRepos(newList);
 
     this.setState({ repositories: newList });
   };
@@ -36,7 +37,7 @@ export default class Main extends Component {
     const repository = this.state.repositories.find(repo => repo.id === id);
 
     try {
-      // Fetch update repo
+      // Fetch updated repo
       const updatedRepo = await fetchRepo(repository.full_name);
 
       // Format the date
