@@ -15,6 +15,8 @@ For this challenge, you should improve the app that was developed through the se
 ### Skills
 React, Styled Components, localStorage, CSS, Font-Awesome.
 
+You can preview the project [here](https://www.loom.com/share/2cd2c3c23d5f4775be4ad6b94b089ccb)
+
 ## create-react-app
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
