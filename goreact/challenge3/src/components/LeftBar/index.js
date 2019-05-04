@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { toast } from 'react-toastify';
 import { Creators as UserActions } from '../../store/ducks/users';
 
 import './style.css';
@@ -21,7 +22,13 @@ const LeftBar = ({ users, removeUser }) => (
               </div>
             </div>
             <div className="buttons">
-              <button type="button" onClick={() => removeUser(user)}>
+              <button
+                type="button"
+                onClick={() => {
+                  removeUser(user);
+                  toast.warn('Removed User');
+                }}
+              >
                 <i className="fa fa-trash-o" aria-hidden="true" />
               </button>
               <a
