@@ -39,7 +39,10 @@ class Map extends Component {
     navigator.geolocation.getCurrentPosition(({ coords }) => {
       const { latitude, longitude } = coords;
       // TODO: make the user input dynamic
-      this.props.addUserRequest({ user: 'lcnogueira', coord: { latitude, longitude } });
+      this.props.addUserRequest({
+        user: process.env.REACT_APP_GITHUB_USER,
+        coord: { latitude, longitude },
+      });
       this.setState({
         viewport: {
           ...this.state.viewport,
