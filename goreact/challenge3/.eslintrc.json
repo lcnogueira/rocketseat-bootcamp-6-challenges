@@ -13,7 +13,7 @@
     ],
     "import/prefer-default-export": "off",
     "react/jsx-one-expression-per-line": "off",
-    "react/destructuring-assignment": "off",
-    "no-console": "off"
+    "react/no-access-state-in-setstate": "off",
+    "react/destructuring-assignment": "off"
   }
 }

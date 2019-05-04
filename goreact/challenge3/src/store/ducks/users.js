@@ -2,9 +2,10 @@
  * Types
  */
 export const Types = {
-  ADD_REQUEST: 'favorites/ADD_REQUEST',
-  ADD_SUCCESS: 'favorites/ADD_SUCCESS',
-  ADD_FAILURE: 'favorites/ADD_FAILURE',
+  ADD_REQUEST: 'users/ADD_REQUEST',
+  ADD_SUCCESS: 'users/ADD_SUCCESS',
+  ADD_FAILURE: 'users/ADD_FAILURE',
+  REMOVE: 'users/REMOVE',
 };
 
 /**
@@ -16,7 +17,7 @@ const INITIAL_STATE = {
   error: null,
 };
 
-export default function favorites(state = INITIAL_STATE, action) {
+export default function users(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.ADD_REQUEST:
       return { ...state, loading: true };
@@ -29,6 +30,8 @@ export default function favorites(state = INITIAL_STATE, action) {
       };
     case Types.ADD_FAILURE:
       return { ...state, loading: false, error: action.payload.error };
+    case Types.REMOVE:
+      return { ...state, data: state.data.filter(user => user.id !== action.payload.user.id) };
     default:
       return state;
   }
@@ -38,16 +41,20 @@ export default function favorites(state = INITIAL_STATE, action) {
  * Actions
  */
 export const Creators = {
-  addFavoriteRequest: repository => ({
+  addUserRequest: ({ user, coord }) => ({
     type: Types.ADD_REQUEST,
-    payload: { repository },
+    payload: { user, coord },
   }),
-  addFavoriteSuccess: data => ({
+  addUserSuccess: data => ({
     type: Types.ADD_SUCCESS,
     payload: { data },
   }),
-  addFavoriteFailure: error => ({
+  addUserFailure: error => ({
     type: Types.ADD_FAILURE,
     payload: { error },
+  }),
+  removeUser: user => ({
+    type: Types.REMOVE,
+    payload: { user },
   }),
 };
