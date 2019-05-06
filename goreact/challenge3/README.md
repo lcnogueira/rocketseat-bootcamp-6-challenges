@@ -1,13 +1,13 @@
 # Challenge 3 - Developer Marker App
 
 ## Description
-Create a project from scratch by using create-react-app. Besides that, use ESLint, EditorConfig and Prettier tools ins this project.
+Create a project from scratch by using create-react-app. Besides that, use ESLint, EditorConfig and Prettier tools in this project.
 
 For this challenge, you should build an app by using "React Map GL" library from Uber. The app is about a developers localization repository. The user should be able to add developers to the map by clicking it and inserting the developer github username. The app should get the user data via github API and save it in redux state.
 
 The app should look like this:
 
-<img src="https://user-images.githubusercontent.com/12154623/57223568-e5c6a580-6fdc-11e9-9970-4eb7c9f10ffd.png" height="50%" width="50%" >
+![listagem](https://user-images.githubusercontent.com/12154623/57225888-fd555c80-6fe3-11e9-9597-89a25b05efb3.png)
 
 You can see a list of added users on the left menu bar and the users' avatars pointing to their positions on the map.
 
