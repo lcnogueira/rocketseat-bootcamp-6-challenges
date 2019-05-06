@@ -1,0 +1,26 @@
+.right-container {
+  position: absolute;
+  bottom: 2%;
+  right: 2%;
+  width: 15%;
+  background: rgba(248, 248, 248, 0.8);
+  border-radius: 3px;
+  padding: 20px 15px;
+}
+
+.right-container h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 3px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.right-container li {
+  list-style: none;
+}
+
+.right-container .template {
+  display: block;
+  margin-bottom: 5px;
+}
