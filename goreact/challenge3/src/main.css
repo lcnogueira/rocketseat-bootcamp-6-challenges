@@ -9,3 +9,27 @@ body {
   font-family: sans-serif;
   height: 100%;
 }
+
+button {
+  cursor: pointer;
+  color: #fff;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.bg-primary {
+  background: #007bff;
+  border: #007bff;
+}
+.bg-secondary {
+  background: #63f5b8;
+  border: #63f5b8;
+}
+.bg-danger {
+  background: #dc3545;
+  border: #dc3545;
+}

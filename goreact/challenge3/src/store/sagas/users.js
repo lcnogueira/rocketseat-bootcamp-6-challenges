@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import api from '../../services/api';
 
 import { Creators as UserActions } from '../ducks/users';
+import { Creators as ModalActions } from '../ducks/modal';
 
 export function* addUser(action) {
   let message = 'User successfully added';
@@ -33,5 +34,7 @@ export function* addUser(action) {
     message = 'User not found';
     yield put(UserActions.addUserFailure(message));
     toast.error(message);
+  } finally {
+    yield put(ModalActions.hideModal());
   }
 }

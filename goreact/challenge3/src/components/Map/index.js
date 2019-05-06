@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Creators as ModalActions } from '../../store/ducks/modal';
 import { Creators as UserActions } from '../../store/ducks/users';
 
 import './style.css';
@@ -11,6 +12,7 @@ import './style.css';
 class Map extends Component {
   static propTypes = {
     addUserRequest: PropTypes.func.isRequired,
+    showModal: PropTypes.func.isRequired,
     users: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number,
@@ -38,11 +40,12 @@ class Map extends Component {
     // Get the current position
     navigator.geolocation.getCurrentPosition(({ coords }) => {
       const { latitude, longitude } = coords;
-      // TODO: make the user input dynamic
-      this.props.addUserRequest({
-        user: process.env.REACT_APP_GITHUB_USER,
-        coord: { latitude, longitude },
-      });
+      if (process.env.REACT_APP_GITHUB_USER) {
+        this.props.addUserRequest({
+          user: process.env.REACT_APP_GITHUB_USER,
+          coord: { latitude, longitude },
+        });
+      }
       this.setState({
         viewport: {
           ...this.state.viewport,
@@ -69,10 +72,10 @@ class Map extends Component {
     });
   };
 
-  handleMapClick = (e) => {
+  handleMapClick = async (e) => {
     const [longitude, latitude] = e.lngLat;
 
-    this.props.addUserRequest({ user: 'diego3g', coord: { latitude, longitude } });
+    await this.props.showModal({ latitude, longitude });
   };
 
   render() {
@@ -95,7 +98,7 @@ class Map extends Component {
 
 const mapStToProps = ({ users, templates }) => ({ users: users.data, template: templates.choosen });
 
-const mapDispToProps = dispatch => bindActionCreators(UserActions, dispatch);
+const mapDispToProps = dispatch => bindActionCreators({ ...ModalActions, ...UserActions }, dispatch);
 
 export default connect(
   mapStToProps,
