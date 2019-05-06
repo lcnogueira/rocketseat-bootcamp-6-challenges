@@ -23,6 +23,7 @@ class Map extends Component {
         }),
       }),
     ).isRequired,
+    template: PropTypes.string.isRequired,
   };
 
   state = {
@@ -31,7 +32,6 @@ class Map extends Component {
       height: window.innerHeight,
       zoom: 15,
     },
-    mapStyle: 'streets-v11',
   };
 
   componentDidMount() {
@@ -80,7 +80,7 @@ class Map extends Component {
       <ReactMapGL
         {...this.state.viewport}
         onViewportChange={viewport => this.setState({ viewport })}
-        mapStyle={`mapbox://styles/mapbox/${this.state.mapStyle}`}
+        mapStyle={`mapbox://styles/mapbox/${this.props.template}`}
         onClick={this.handleMapClick}
       >
         {this.props.users.map(user => (
@@ -93,7 +93,7 @@ class Map extends Component {
   }
 }
 
-const mapStToProps = ({ users }) => ({ users: users.data });
+const mapStToProps = ({ users, templates }) => ({ users: users.data, template: templates.choosen });
 
 const mapDispToProps = dispatch => bindActionCreators(UserActions, dispatch);
 
