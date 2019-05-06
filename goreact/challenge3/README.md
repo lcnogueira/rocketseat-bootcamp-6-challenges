@@ -31,7 +31,7 @@ You can see a list of added users on the left menu bar and the users' avatars po
 React, Redux, Redux Saga, CSS, React Map GL (Uber).
 
 ### Preview
-You can preview the project [here]()
+You can preview the project [here](https://www.loom.com/share/acf0f31111a24c49acbd579965d4be91)
 
 ### create-react-app
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
