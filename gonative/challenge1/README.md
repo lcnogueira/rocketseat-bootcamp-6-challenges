@@ -6,7 +6,7 @@ You should create a mobile application from scratch and configure ESLint, Editor
 You'll create a posts feed that looks like the above image.
 
 ## Requirements
-1. The layout should be created by using only the `<View />`, `<Text />` and `<ScrollView />>` components from React Native.
+1. The layout should be created by using only the `<View />`, `<Text />` and `<ScrollView />` components from React Native.
 2. The white box should be in a separate component called `Post` inside a file called `Post.js`.
 3. The posts should be stored in the main component state and each one should contain information about the post title, author and description.
 
