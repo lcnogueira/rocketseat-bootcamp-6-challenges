@@ -8,6 +8,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#ff6666',
     padding: 20,
   },
+  containerTitle: {
+    color: '#fff',
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
 });
 
 export default styles;

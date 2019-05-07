@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, Text } from 'react-native';
+import Post from '~/components/Post';
+
 import styles from './styles';
 
-import { fakePosts } from '../../seeders';
-
-import Post from '../../components/Post';
+import { fakePosts } from '~/seeders';
 
 function Main() {
   const [posts, setPosts] = useState([]);
@@ -15,6 +15,7 @@ function Main() {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.containerTitle}>GoNative - Challenge 1</Text>
       <ScrollView showsVerticalScrollIndicator={false}>
         {posts.map(post => (
           <Post key={post.id} post={post} />
