@@ -16,6 +16,11 @@ export default class Issues extends Component {
 
   static navigationOptions = ({ navigation }) => ({
     title: navigation.getParam('title'),
+    headerTitleStyle: {
+      flex: 1,
+      textAlign: 'center',
+    },
+    headerRight: <View />,
   });
 
   state = {
