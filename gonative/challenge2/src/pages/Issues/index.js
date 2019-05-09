@@ -43,7 +43,6 @@ export default class Issues extends Component {
 
     try {
       const issues = await getIssues(repoFullName, issuesState);
-
       this.setState({ issues, error: false });
     } catch (err) {
       this.setState({ error: true });
@@ -58,7 +57,7 @@ export default class Issues extends Component {
     const { issues, refreshing } = this.state;
 
     if (!issues.length) {
-      return <Text style={styles.empty}>No issues Found.</Text>;
+      return <Text style={styles.empty}>There are no issues in this repo.</Text>;
     }
 
     return (
