@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   reposContainer: {
+    flex: 1,
     borderTopColor: colors.light,
     borderTopWidth: 1,
     paddingTop: metrics.basePadding * 2,
