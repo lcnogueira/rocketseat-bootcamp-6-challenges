@@ -1,24 +1,19 @@
 import React, { Component } from 'react';
-import { View, ActivityIndicator, FlatList } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import PropTypes from 'prop-types';
+import {
+  View, ActivityIndicator, FlatList, TextInput,
+} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import RepositoryItem from './RepositoryItem';
-import Header from '~/components/Header';
 import api from '~/services/api';
 
 import styles from './styles';
 
-const TabIcon = ({ tintColor }) => <Icon name="list-alt" size={20} color={tintColor} />;
-
-TabIcon.propTypes = {
-  tintColor: PropTypes.string.isRequired,
-};
-
 export default class Repositories extends Component {
   static navigationOptions = {
-    tabBarIcon: TabIcon,
+    title: 'GitIssues',
   };
 
   state = {
@@ -34,10 +29,9 @@ export default class Repositories extends Component {
   loadRepositories = async () => {
     this.setState({ refreshing: true });
 
-    const username = await AsyncStorage.getItem('@Githuber:username');
-    const { data } = await api.get(`/users/${username}/repos`);
+    const repositories = await AsyncStorage.getItem('@Githuber:repositories');
 
-    this.setState({ data, loading: false, refreshing: false });
+    this.setState({ data: repositories, loading: false, refreshing: false });
   };
 
   renderListItem = ({ item }) => <RepositoryItem repository={item} />;
@@ -61,7 +55,12 @@ export default class Repositories extends Component {
 
     return (
       <View style={styles.container}>
-        <Header title="Repositories" />
+        <View style={styles.inputContainer}>
+          <TextInput placeholder="Add new repository" />
+          <TouchableOpacity onPress={() => {}}>
+            <Icon name="plus" size={14} styles={styles.icon} />
+          </TouchableOpacity>
+        </View>
         {loading ? <ActivityIndicator style={styles.loading} /> : this.renderList()}
       </View>
     );

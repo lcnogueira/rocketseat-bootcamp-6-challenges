@@ -1,39 +1,24 @@
-import {
-  createAppContainer,
-  createSwitchNavigator,
-  createBottomTabNavigator,
-} from 'react-navigation';
+import { createAppContainer, createStackNavigator } from 'react-navigation';
 
 import { colors } from '~/styles';
 
-import Welcome from '~/pages/Welcome';
 import Repositories from '~/pages/Repositories';
-import Organizations from '~/pages/Organizations';
+import Issues from '~/pages/Issues';
 
-const Routes = (userLogged = false) => createAppContainer(
-  createSwitchNavigator(
+const Routes = createAppContainer(
+  createStackNavigator(
     {
-      Welcome,
-      User: createBottomTabNavigator(
-        {
-          Repositories,
-          Organizations,
-        },
-        {
-          tabBarOptions: {
-            showIcon: true,
-            showLabel: false,
-            activeTintColor: colors.white,
-            inactiveTintColor: colors.whiteTransparent,
-            style: {
-              backgroundColor: colors.secondary,
-            },
-          },
-        },
-      ),
+      Repositories,
+      Issues,
     },
     {
-      initialRouteName: userLogged ? 'User' : 'Welcome',
+      defaultNavigationOptions: {
+        headerBackTitle: false,
+        headerTitleStyle: {
+          flex: 1,
+          textAlign: 'center',
+        },
+      },
     },
   ),
 );
