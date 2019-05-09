@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import {
-  View, ActivityIndicator, FlatList, TextInput, TouchableOpacity, Text,
+  View,
+  ActivityIndicator,
+  FlatList,
+  TextInput,
+  TouchableOpacity,
+  Text,
+  StatusBar,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { getLocalRepos, saveLocalRepos } from '~/utils/AsyncStorageUtils';
@@ -18,7 +24,7 @@ export default class Repositories extends Component {
 
   state = {
     repos: [],
-    loading: true,
+    loading: false,
     refreshing: false,
     repoInput: '',
     error: false,
@@ -53,11 +59,12 @@ export default class Repositories extends Component {
       this.setState({
         repos: totalRepos,
         repoInput: '',
-        loading: false,
         error: false,
       });
     } catch (err) {
-      this.setState({ loading: false, error: true });
+      this.setState({ error: true });
+    } finally {
+      this.setState({ loading: false, refreshing: false });
     }
   };
 
@@ -65,7 +72,7 @@ export default class Repositories extends Component {
     this.setState({ refreshing: true });
     const localRepos = await getLocalRepos();
 
-    this.setState({ repos: localRepos || [], loading: false, refreshing: false });
+    this.setState({ repos: localRepos || [], refreshing: false });
   };
 
   renderList = () => {
@@ -92,6 +99,7 @@ export default class Repositories extends Component {
 
     return (
       <View style={styles.container}>
+        <StatusBar barStyle="light-content" />
         <View style={styles.inputContainer}>
           <TextInput
             placeholder="Add repository (e.g. 'facebook/react')"
@@ -109,7 +117,7 @@ export default class Repositories extends Component {
             )}
           </TouchableOpacity>
         </View>
-        {error && <Text style={styles.error}>Ocorreu um erro. Tente novamente</Text>}
+        {error && <Text style={styles.error}>An error occurred. Try again.</Text>}
         <View style={styles.reposContainer}>{repos && this.renderList()}</View>
       </View>
     );

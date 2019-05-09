@@ -1,60 +1,81 @@
 import React, { Component } from 'react';
-import { View, FlatList, ActivityIndicator } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
+import {
+  View, StatusBar, FlatList, ActivityIndicator, Text,
+} from 'react-native';
+import PropTypes from 'prop-types';
 
 import IssueItem from './IssueItem';
-import api from '~/services/api';
+import { getIssues } from '~/utils/ApiUtils';
 
 import styles from './styles';
 
-export default class Organizations extends Component {
-  static navigationOptions = {
-    title: 'rocketnative',
+export default class Issues extends Component {
+  static propTypes = {
+    navigation: PropTypes.shape({}).isRequired,
   };
 
+  static navigationOptions = ({ navigation }) => ({
+    title: navigation.getParam('title'),
+  });
+
   state = {
-    data: [],
+    issues: [],
+    issuesState: 'all',
     loading: true,
     refreshing: false,
   };
 
   componentDidMount() {
-    this.loadOrganizations();
+    this.loadIssues();
   }
 
-  loadOrganizations = async () => {
+  loadIssues = async () => {
     this.setState({ refreshing: true });
 
-    const username = await AsyncStorage.getItem('@Githuber:username');
-    const { data } = await api.get(`/users/${username}/orgs`);
+    const { navigation } = this.props;
+    const { issuesState } = this.state;
+    const repoFullName = navigation.getParam('repoFullName');
 
-    this.setState({ data, loading: false, refreshing: false });
+    try {
+      const issues = await getIssues(repoFullName, issuesState);
+
+      this.setState({ issues, error: false });
+    } catch (err) {
+      this.setState({ error: true });
+    } finally {
+      this.setState({ loading: false, refreshing: false });
+    }
   };
 
-  renderListItem = ({ item }) => <IssueItem organization={item} />;
+  renderListItem = ({ item }) => <IssueItem issue={item} />;
 
   renderList = () => {
-    const { data, refreshing } = this.state;
+    const { issues, refreshing } = this.state;
+
+    if (!issues.length) {
+      return <Text style={styles.empty}>No issues Found.</Text>;
+    }
 
     return (
       <FlatList
-        data={data}
+        data={issues}
         keyExtractor={item => String(item.id)}
         renderItem={this.renderListItem}
-        onRefresh={this.loadOrganizations}
-        numColumns={2}
-        columnWrapperStyle={styles.columnWrapper}
+        onRefresh={this.loadIssues}
         refreshing={refreshing}
+        showsVerticalScrollIndicator={false}
       />
     );
   };
 
   render() {
-    const { loading } = this.state;
-
+    const { loading, error } = this.state;
     return (
       <View style={styles.container}>
-        {loading ? <ActivityIndicator style={styles.loading} /> : this.renderList()}
+        <StatusBar barStyle="light-content" />
+        {error && <Text style={styles.error}>An error occurred. Try again</Text>}
+        {/* TODO: Issues Filer */}
+        {loading ? <ActivityIndicator style={styles.loading} size="large" /> : this.renderList()}
       </View>
     );
   }

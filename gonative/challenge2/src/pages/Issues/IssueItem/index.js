@@ -1,22 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Linking } from 'react-native';
 
-import { View, Text, Image } from 'react-native';
+import Card from '~/components/Card';
 
-import styles from './styles';
+// import styles from './styles';
 
-const OrganizationItem = ({ organization }) => (
-  <View style={styles.container}>
-    <Image style={styles.avatar} source={{ uri: organization.avatar_url }} />
-    <Text syle={styles.title}>{organization.login}</Text>
-  </View>
+const IssuesItem = ({ issue }) => (
+  <Card
+    avatarUrl={issue.user.avatar_url}
+    title={issue.title}
+    subtitle={issue.user.login}
+    onPress={() => Linking.openURL(issue.html_url)}
+  />
 );
 
-OrganizationItem.propTypes = {
-  organization: PropTypes.shape({
-    avatar_url: PropTypes.string,
-    login: PropTypes.string,
+IssuesItem.propTypes = {
+  issue: PropTypes.shape({
+    user: PropTypes.shape({
+      avatar_url: PropTypes.string,
+      login: PropTypes.string,
+    }),
+    title: PropTypes.string,
+    url: PropTypes.string,
   }).isRequired,
 };
 
-export default OrganizationItem;
+export default IssuesItem;

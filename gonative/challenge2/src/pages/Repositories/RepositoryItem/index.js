@@ -1,11 +1,11 @@
 import React from 'react';
-import {
-  View, Text, Image, TouchableOpacity, Alert,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { Alert } from 'react-native';
 import PropTypes from 'prop-types';
+import { withNavigation } from 'react-navigation';
 
-import styles from './styles';
+import Card from '~/components/Card';
+
+// import styles from './styles';
 
 const confirm = (repoName, removeItem) => {
   Alert.alert('Removing repository', `Are you sure you wanna remove "${repoName}"?`, [
@@ -14,21 +14,18 @@ const confirm = (repoName, removeItem) => {
   ]);
 };
 
-const RepositoryItem = ({ repository, removeItem }) => (
-  <View>
-    <TouchableOpacity
-      onPress={() => {}}
-      style={styles.buttonContainer}
-      onLongPress={() => confirm(repository.name, removeItem)}
-    >
-      <Image style={styles.avatar} source={{ uri: repository.avatar }} />
-      <View style={styles.text}>
-        <Text style={styles.repositoryName}>{repository.name}</Text>
-        <Text style={styles.organizationName}>{repository.organization}</Text>
-      </View>
-      <Icon name="chevron-right" size={16} style={styles.icon} />
-    </TouchableOpacity>
-  </View>
+const RepositoryItem = ({ repository, removeItem, navigation }) => (
+  <Card
+    avatarUrl={repository.avatar}
+    title={repository.name}
+    subtitle={repository.organization}
+    onPress={() => navigation.navigate('Issues', {
+      title: repository.name,
+      repoFullName: `${repository.organization}/${repository.name}`,
+    })
+    }
+    onLongPress={() => confirm(repository.name, removeItem)}
+  />
 );
 
 RepositoryItem.propTypes = {
@@ -38,6 +35,9 @@ RepositoryItem.propTypes = {
     avatar: PropTypes.string,
   }).isRequired,
   removeItem: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
 };
 
-export default RepositoryItem;
+export default withNavigation(RepositoryItem);

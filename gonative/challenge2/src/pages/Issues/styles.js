@@ -5,13 +5,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.lighter,
+    padding: metrics.basePadding * 2,
   },
   loading: {
-    marginTop: metrics.baseMargin * 2,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  columnWrapper: {
-    marginHorizontal: metrics.baseMargin * 2,
-    justifyContent: 'space-between',
+  empty: {
+    textAlign: 'center',
+    color: colors.primary,
+    fontWeight: 'bold',
+    fontSize: 20,
   },
 });
 
