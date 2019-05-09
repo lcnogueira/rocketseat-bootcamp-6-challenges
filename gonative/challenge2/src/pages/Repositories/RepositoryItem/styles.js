@@ -2,33 +2,36 @@ import { StyleSheet } from 'react-native';
 import { colors, metrics } from '~/styles';
 
 const styles = StyleSheet.create({
-  container: {
+  buttonContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     backgroundColor: colors.white,
+    marginBottom: metrics.baseMargin,
+    padding: metrics.basePadding * 2,
     borderRadius: metrics.baseRadius,
-    padding: metrics.basePadding,
-    marginHorizontal: metrics.baseMargin * 2,
-    marginTop: metrics.baseMargin,
   },
-  title: {
-    fontSize: 14,
+  avatar: {
+    width: 45,
+    height: 45,
+    borderRadius: 50,
+  },
+  text: {
+    flex: 1,
+    marginLeft: metrics.baseMargin * 2,
+  },
+  repositoryName: {
+    color: colors.darker,
+    fontSize: 19,
     fontWeight: 'bold',
   },
-  infoContainer: {
-    flexDirection: 'row',
-    marginTop: metrics.baseMargin,
+  organizationName: {
+    color: colors.regular,
+    fontSize: 13,
   },
-  info: {
-    flexDirection: 'row',
-    marginRight: metrics.baseMargin,
-    alignItems: 'center',
-  },
-  infoIcon: {
-    color: colors.dark,
-  },
-  infoText: {
-    color: colors.dark,
-    fontSize: 12,
-    marginLeft: metrics.baseMargin / 2,
+  icon: {
+    color: colors.regular,
   },
 });
 

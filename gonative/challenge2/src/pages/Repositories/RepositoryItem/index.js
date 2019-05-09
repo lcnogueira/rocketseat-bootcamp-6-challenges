@@ -1,36 +1,30 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import {
+  View, Text, Image, TouchableOpacity,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
 
 const RepositoryItem = ({ repository }) => (
-  <View style={styles.container}>
-    <Text style={styles.title}>{repository.full_name}</Text>
-    <View style={styles.infoContainer}>
-      <View style={styles.info}>
-        <Icon name="star" size={12} style={styles.infoIcon} />
-        <Text style={styles.infoText}>{repository.stargazers_count}</Text>
+  <View>
+    <TouchableOpacity onPress={() => {}} style={styles.buttonContainer}>
+      <Image style={styles.avatar} source={{ uri: repository.avatar }} />
+      <View style={styles.text}>
+        <Text style={styles.repositoryName}>{repository.name}</Text>
+        <Text style={styles.organizationName}>{repository.organization}</Text>
       </View>
-      <View style={styles.info}>
-        <Icon name="code-fork" size={12} style={styles.infoIcon} />
-        <Text style={styles.infoText}>{repository.forks_count}</Text>
-      </View>
-      <View style={styles.info}>
-        <Icon name="eye" size={12} style={styles.infoIcon} />
-        <Text style={styles.infoText}>{repository.watchers_count}</Text>
-      </View>
-    </View>
+      <Icon name="chevron-right" size={16} style={styles.icon} />
+    </TouchableOpacity>
   </View>
 );
 
 RepositoryItem.propTypes = {
   repository: PropTypes.shape({
-    full_name: PropTypes.string,
-    stargazers_count: PropTypes.number,
-    forks_count: PropTypes.number,
-    watchers_count: PropTypes.number,
+    name: PropTypes.string,
+    organization: PropTypes.string,
+    avatar: PropTypes.string,
   }).isRequired,
 };
 
