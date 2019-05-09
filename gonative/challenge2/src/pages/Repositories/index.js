@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import {
   View, ActivityIndicator, FlatList, TextInput, TouchableOpacity, Text,
 } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { getLocalRepos, saveLocalRepos } from '~/utils/AsyncStorageUtils';
+import { getRemoteRepo } from '~/utils/ApiUtils';
 
 import RepositoryItem from './RepositoryItem';
-import api from '~/services/api';
 
 import styles from './styles';
 import { colors } from '~/styles';
@@ -28,24 +28,27 @@ export default class Repositories extends Component {
     this.loadRepos();
   }
 
-  saveToLocal = async (repos) => {
-    await AsyncStorage.setItem('GitIssues:repositories', JSON.stringify(repos));
+  removeItem = async (remove) => {
+    const allRepos = await getLocalRepos();
+    const filteredRepos = allRepos.filter(repo => repo.id !== remove.id);
+    await saveLocalRepos(filteredRepos);
+    this.setState({ repos: filteredRepos });
   };
 
   saveRepo = async () => {
     const { repoInput, repos } = this.state;
     this.setState({ loading: true });
     try {
-      const { data } = await api.get(`/repos/${repoInput}`);
-      const localRepo = {
-        id: data.id,
-        name: data.name,
-        organization: data.owner.login,
-        avatar: data.owner.avatar_url,
+      const remoteRepo = await getRemoteRepo(repoInput);
+      const newRepo = {
+        id: remoteRepo.id,
+        name: remoteRepo.name,
+        organization: remoteRepo.owner.login,
+        avatar: remoteRepo.owner.avatar_url,
       };
 
-      const totalRepos = [...repos, localRepo];
-      await this.saveToLocal(totalRepos);
+      const totalRepos = [...repos, newRepo];
+      await saveLocalRepos(totalRepos);
 
       this.setState({
         repos: totalRepos,
@@ -60,9 +63,9 @@ export default class Repositories extends Component {
 
   loadRepos = async () => {
     this.setState({ refreshing: true });
-    const repos = JSON.parse(await AsyncStorage.getItem('GitIssues:repositories'));
+    const localRepos = await getLocalRepos();
 
-    this.setState({ repos: repos || [], loading: false, refreshing: false });
+    this.setState({ repos: localRepos || [], loading: false, refreshing: false });
   };
 
   renderList = () => {
@@ -72,9 +75,12 @@ export default class Repositories extends Component {
       <FlatList
         data={repos}
         keyExtractor={item => String(item.id)}
-        renderItem={({ item }) => <RepositoryItem repository={item} />}
+        renderItem={({ item }) => (
+          <RepositoryItem repository={item} removeItem={() => this.removeItem(item)} />
+        )}
         onRefresh={this.loadRepos}
         refreshing={refreshing}
+        showsVerticalScrollIndicator={false}
       />
     );
   };
