@@ -14,6 +14,7 @@ Here you can find all of the code I've developed for the Rocketseat Bootcamp cha
 
 - GoNative
   - [First Module - Architecture and Concepts](gonative/challenge1)
+  - [Second Module - Githuber App](gonative/challenge2)
 
 ## Get int touch!
 
