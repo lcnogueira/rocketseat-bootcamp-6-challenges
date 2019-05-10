@@ -1,4 +1,4 @@
-# Challenge 3 - Developer Marker App
+# Challenge 3 - Developer Marker App (Third React Module)
 
 ## Description
 Create a project from scratch by using create-react-app. Besides that, use ESLint, EditorConfig and Prettier tools in this project.
