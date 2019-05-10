@@ -27,7 +27,7 @@ export default class Repositories extends Component {
     loading: false,
     refreshing: false,
     repoInput: '',
-    error: false,
+    error: '',
   };
 
   componentDidMount() {
@@ -44,8 +44,20 @@ export default class Repositories extends Component {
   saveRepo = async () => {
     const { repoInput, repos } = this.state;
     this.setState({ loading: true });
+
+    if (!repoInput) {
+      this.setState({ error: 'Empty repository name.', loading: false });
+      return;
+    }
+
     try {
       const remoteRepo = await getRemoteRepo(repoInput);
+
+      if (repos.find(repo => repo.id === remoteRepo.id)) {
+        this.setState({ error: 'Repository already inserted.' });
+        return;
+      }
+
       const newRepo = {
         id: remoteRepo.id,
         name: remoteRepo.name,
@@ -59,10 +71,10 @@ export default class Repositories extends Component {
       this.setState({
         repos: totalRepos,
         repoInput: '',
-        error: false,
+        error: '',
       });
     } catch (err) {
-      this.setState({ error: true });
+      this.setState({ error: 'Repository not found.' });
     } finally {
       this.setState({ loading: false, refreshing: false });
     }
@@ -106,7 +118,7 @@ export default class Repositories extends Component {
             autoCapitalize="none"
             autoCorrect={false}
             value={repoInput}
-            onChangeText={text => this.setState({ repoInput: text, error: false })}
+            onChangeText={text => this.setState({ repoInput: text, error: '' })}
             style={styles.repoInput}
           />
           <TouchableOpacity onPress={this.saveRepo}>
@@ -117,8 +129,12 @@ export default class Repositories extends Component {
             )}
           </TouchableOpacity>
         </View>
-        {error && <Text style={styles.error}>An error occurred. Try again.</Text>}
-        <View style={styles.reposContainer}>{repos && this.renderList()}</View>
+        {!!error && <Text style={styles.error}>{error}</Text>}
+        {!repos ? (
+          <ActivityIndicator size="large" color={colors.dark} />
+        ) : (
+          <View style={styles.reposContainer}>{this.renderList()}</View>
+        )}
       </View>
     );
   }
