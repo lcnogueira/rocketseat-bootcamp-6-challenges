@@ -1,7 +1,5 @@
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 
-import { colors } from '~/styles';
-
 import Repositories from '~/pages/Repositories';
 import Issues from '~/pages/Issues';
 

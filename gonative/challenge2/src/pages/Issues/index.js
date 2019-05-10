@@ -5,6 +5,7 @@ import {
 import PropTypes from 'prop-types';
 
 import IssueItem from './IssueItem';
+import IssueFilter from './IssueFilter';
 import { getIssues } from '~/utils/ApiUtils';
 
 import styles from './styles';
@@ -26,6 +27,7 @@ export default class Issues extends Component {
   state = {
     issues: [],
     issuesState: 'all',
+    issuesStateList: ['all', 'open', 'closed'],
     loading: true,
     refreshing: false,
   };
@@ -34,11 +36,29 @@ export default class Issues extends Component {
     this.loadIssues();
   }
 
+  filterIssues = async (selectedState) => {
+    this.setState({ loading: true, issuesState: selectedState });
+
+    const { navigation } = this.props;
+
+    const repoFullName = navigation.getParam('repoFullName');
+
+    try {
+      const issues = await getIssues(repoFullName, selectedState);
+      this.setState({ issues, error: false });
+    } catch (err) {
+      this.setState({ error: true });
+    } finally {
+      this.setState({ loading: false });
+    }
+  };
+
   loadIssues = async () => {
     this.setState({ refreshing: true });
 
     const { navigation } = this.props;
     const { issuesState } = this.state;
+
     const repoFullName = navigation.getParam('repoFullName');
 
     try {
@@ -73,12 +93,22 @@ export default class Issues extends Component {
   };
 
   render() {
-    const { loading, error } = this.state;
+    const {
+      loading, error, issues, issuesState, issuesStateList,
+    } = this.state;
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
         {error && <Text style={styles.error}>An error occurred. Try again</Text>}
-        {/* TODO: Issues Filer */}
+
+        {!!issues.length && (
+          <IssueFilter
+            selectedState={issuesState}
+            states={issuesStateList}
+            switchState={this.filterIssues}
+          />
+        )}
+
         {loading ? <ActivityIndicator style={styles.loading} size="large" /> : this.renderList()}
       </View>
     );
