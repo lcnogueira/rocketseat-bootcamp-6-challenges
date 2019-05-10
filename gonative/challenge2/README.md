@@ -1,11 +1,13 @@
 # Challenge 2 - Githuber App (Second React-Native Module)
 
 ## Description
-You should create a mobile application from scratch and configure ESLint, EditorConfig, Reactotron and "Babel Module Resolver. For this challenge, you should build an app by consuming the Github API data to list repositories issues. Use Flexbox to build the app interface.
+You should create a mobile application from scratch and configure ESLint, EditorConfig, Reactotron and Babel Module Resolver. For this challenge, you should build an app by consuming the Github API data to list repositories issues. Use Flexbox to build the app interface.
 
 The app will allow the user to insert the name of an existing repository that will be shown on the first screen. The list of existing issues will appear on a new screen when the user clicks on a repository. Besides that, the user should be capable of filtering issues by "state" (open, closed and all). Both app pages should be stylized like the following images.
 
-<img width="500" alt="screens" src="https://user-images.githubusercontent.com/12154623/57534998-ac14d800-7317-11e9-95ac-3f6b51b6297c.png">
+<div align="center">
+  <img width="500" alt="screens" src="https://user-images.githubusercontent.com/12154623/57534998-ac14d800-7317-11e9-95ac-3f6b51b6297c.png">
+</div>
 
 ## Requirements
 - The input field used to add a new repository should accept information that follows the pattern "organization/repository" (Ex.: "facebook/react")
@@ -32,7 +34,6 @@ You can preview the final project here:
 <div align="center">
 <img height="500" width="250" alt="screens" src="https://user-images.githubusercontent.com/12154623/57539364-bab3bd00-7320-11e9-9012-c3eec2fd5a79.gif">
 <img height="500" width="250" alt="native challenge 2 screen" src="https://user-images.githubusercontent.com/12154623/57539911-e71c0900-7321-11e9-8604-1439542c9ed8.jpg">
-<img height="500" width="250" alt="native challenge 2 screen" src="https://user-images.githubusercontent.com/12154623/57540094-45e18280-7322-11e9-803f-3aaef68e5bcc.jpg">
 <img height="500" width="250" alt="native challenge 2 screen" src="https://user-images.githubusercontent.com/12154623/57539908-e5524580-7321-11e9-950a-db921a0b6bcb.jpg">
 </div>
 
