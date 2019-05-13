@@ -7,6 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@mapbox/react-native-mapbox-gl": "mapbox/react-native-mapbox-gl",
     "axios": "^0.18.0",
     "prop-types": "^15.7.2",
     "react": "16.8.3",
@@ -33,6 +34,7 @@
     "eslint-plugin-react": "^7.13.0",
     "jest": "^24.8.0",
     "metro-react-native-babel-preset": "^0.54.0",
+    "react-native-dotenv": "^0.2.0",
     "react-test-renderer": "16.8.3",
     "reactotron-react-native": "^3.5.0",
     "reactotron-redux": "^3.1.0"

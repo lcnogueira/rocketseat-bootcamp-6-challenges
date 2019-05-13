@@ -16,7 +16,7 @@ function* login(action) {
     // Put: similar to dispatch
     yield put(LoginActions.loginSuccess(username));
 
-    navigate('Repositories');
+    navigate('Map');
   } catch (err) {
     yield put(LoginActions.loginFailure());
   }
