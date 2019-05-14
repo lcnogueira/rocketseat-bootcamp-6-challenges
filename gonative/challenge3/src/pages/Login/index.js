@@ -8,8 +8,10 @@ import PropTypes from 'prop-types';
 import { ActivityIndicator } from 'react-native';
 
 import {
-  Container, Input, Button, ButtonText, Error,
+  Container, Input, Button, ButtonText, Error, Logo, LogoContainer,
 } from './styles';
+
+import logo from '~/assets/images/Octocat.png';
 
 class Login extends Component {
   static propTypes = {
@@ -34,6 +36,9 @@ class Login extends Component {
 
     return (
       <Container>
+        <LogoContainer>
+          <Logo source={logo} />
+        </LogoContainer>
         {error && <Error>User not found.</Error>}
         <Input
           autoCapitalize="none"

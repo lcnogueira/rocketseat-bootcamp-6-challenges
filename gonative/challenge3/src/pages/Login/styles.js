@@ -8,6 +8,17 @@ export const Container = styled.View`
   padding: 30px;
 `;
 
+export const Logo = styled.Image`
+  width: 150px;
+  height: 150px;
+`;
+
+export const LogoContainer = styled.View`
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 60px;
+`;
+
 export const Input = styled.TextInput.attrs({
   placeholderTextColor: '#999',
 })`
