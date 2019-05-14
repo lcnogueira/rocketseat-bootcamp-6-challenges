@@ -1,22 +1,31 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
-  flex: 1;
-`;
-
 export const AnnotationContainer = styled.View`
-  width: 30;
-  height: 30;
+  width: 50;
+  height: 50;
+  border-radius: 50;
   align-items: center;
   justify-content: center;
   background-color: white;
-  border-radius: 15;
 `;
 
-export const AnnotationFill = styled.View`
-  width: 30;
-  height: 30;
-  border-radius: 15;
-  background-color: #7159c1;
-  transform: scale(0.8);
+export const Avatar = styled.Image`
+  height: 50;
+  width: 50;
+  border-radius: 50;
+`;
+
+export const CalloutContainer = styled.View`
+  width: 80;
+`;
+
+export const BioText = styled.Text`
+  color: #999;
+  font-size: 12;
+  margin-top: 10;
+`;
+
+export const NameText = styled.Text`
+  font-size: 16;
+  font-weight: bold;
 `;
