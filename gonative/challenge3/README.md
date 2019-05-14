@@ -22,7 +22,15 @@ The app interface should look like the following.
 9. You'll see the app in the emulator (or on your device screen).
 
 ## Preview
-You can preview the project [here]().
+Images of the final project:
+
+<div align="center">
+<img height="500" width="250" alt="React Native challenge 3 - Screen 1" src="https://user-images.githubusercontent.com/12154623/57725709-24570280-7664-11e9-81d1-4b67f6ea81a8.jpg">
+<img height="500" width="250" alt="React Native challenge 3 - Screen 2" src="https://user-images.githubusercontent.com/12154623/57726119-1ce42900-7665-11e9-9e81-99ba5fc55990.jpg">
+<img height="500" width="250" alt="React Native challenge 3 - Screen 3" src="https://user-images.githubusercontent.com/12154623/57726116-1c4b9280-7665-11e9-8b2a-4d85cc5404dc.jpg">
+</div>
+
+You can see a short video [here](https://www.loom.com/share/595a7d02f8e4448d94f7ee678522a795) as well.
 
 ## Debugging
 
