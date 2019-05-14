@@ -1,4 +1,9 @@
 /**
+ * Modal Action Types
+ */
+import { Types as ModalTypes } from './modal';
+
+/**
  * Action Types
  */
 export const Types = {
@@ -31,6 +36,8 @@ export default function users(state = INITIAL_STATE, action) {
       };
     case Types.ADD_FAILURE:
       return { ...state, loading: false, error: action.payload.error };
+    case ModalTypes.HIDE:
+      return { ...state, error: false };
     default:
       return state;
   }

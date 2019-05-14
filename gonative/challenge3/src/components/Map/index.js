@@ -6,10 +6,11 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 
 import { Creators as UserActions } from '~/store/ducks/users';
+import { Creators as ModalActions } from '~/store/ducks/modal';
 
 import { MAPBOX_ACCESS_TOKEN } from 'react-native-dotenv';
 
-import { PermissionsAndroid } from 'react-native';
+import { PermissionsAndroid, Alert } from 'react-native';
 
 import {
   AnnotationContainer, Avatar, BioText, NameText, CalloutContainer,
@@ -19,8 +20,8 @@ MapboxGL.setAccessToken(MAPBOX_ACCESS_TOKEN);
 
 class Map extends Component {
   state = {
-    latitude: 0,
-    longitude: 0,
+    latitude: -15.8238255,
+    longitude: -47.9555892,
   };
 
   async componentDidMount() {
@@ -44,14 +45,15 @@ class Map extends Component {
           addUserRequest(username, coord);
           this.setState({ ...coord });
         });
+      } else {
+        Alert.alert('Location permission denied');
       }
     } catch (err) {
-      throw Error(err);
+      Alert.alert('An error has occurred');
     }
   }
 
-  renderAnnotations = () => {
-    const { users } = this.props;
+  renderAnnotations = (users) => {
     const annotations = users.data.map(user => (
       <MapboxGL.PointAnnotation
         key={user.id}
@@ -75,14 +77,21 @@ class Map extends Component {
   render() {
     const { latitude, longitude } = this.state;
 
+    const { users, showModal } = this.props;
+
     return (
       <MapboxGL.MapView
         centerCoordinate={[longitude, latitude]}
         style={{ flex: 1 }}
         // showUserLocation
-        styleURL={MapboxGL.StyleURL.Dark}
+        styleURL={MapboxGL.StyleURL.Street}
+        onLongPress={(location) => {
+          const [long, lat] = location.geometry.coordinates;
+
+          showModal({ longitude: long, latitude, lat });
+        }}
       >
-        {this.renderAnnotations()}
+        {this.renderAnnotations(users)}
       </MapboxGL.MapView>
     );
   }
@@ -92,7 +101,6 @@ Map.propTypes = {
   navigation: PropTypes.shape({
     user: PropTypes.shape({}),
   }).isRequired,
-  addUserRequest: PropTypes.func.isRequired,
   users: PropTypes.shape({
     id: PropTypes.number,
     login: PropTypes.string,
@@ -104,11 +112,19 @@ Map.propTypes = {
     name: PropTypes.string,
     bio: PropTypes.string,
   }).isRequired,
+  addUserRequest: PropTypes.func.isRequired,
+  showModal: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({ users: state.users });
 
-const mapDispatchToProps = dispatch => bindActionCreators(UserActions, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators(
+  {
+    ...UserActions,
+    ...ModalActions,
+  },
+  dispatch,
+);
 
 export default withNavigation(
   connect(

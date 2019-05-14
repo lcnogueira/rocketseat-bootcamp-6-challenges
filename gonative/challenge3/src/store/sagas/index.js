@@ -6,6 +6,7 @@ import { navigate } from '~/services/navigation';
 
 import { Creators as LoginActions, Types as LoginTypes } from '~/store/ducks/login';
 import { Creators as UsersActions, Types as UserTypes } from '~/store/ducks/users';
+import { Creators as ModalActions } from '~/store/ducks/modal';
 
 function* login(action) {
   try {
@@ -41,7 +42,7 @@ function* addUser(action) {
       };
 
       yield put(UsersActions.addUserSuccess(userData));
-      // yield put(ModalActions.hideModal());
+      yield put(ModalActions.hideModal());
     }
   } catch (err) {
     yield put(UsersActions.addUserFailure('Error when trying to add user!'));
