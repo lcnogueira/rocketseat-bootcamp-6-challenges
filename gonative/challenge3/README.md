@@ -1,4 +1,4 @@
-# Challenge 3 (Github Mobile Marker App) (Third React-Native Module)
+# Challenge 3 - Github Mobile Marker App (Third React-Native Module)
 
 ## Description
 You should create a mobile application from scratch and configure ESLint, EditorConfig, Reactotron, and Babel Root Import.
