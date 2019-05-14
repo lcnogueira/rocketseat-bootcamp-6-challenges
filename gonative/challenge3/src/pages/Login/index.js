@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as LoginActions from '~/store/actions/login';
+import { Creators as LoginActions } from '~/store/ducks/login';
 import PropTypes from 'prop-types';
 
 import { ActivityIndicator } from 'react-native';

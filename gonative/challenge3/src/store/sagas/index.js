@@ -4,8 +4,8 @@ import {
 import api from '~/services/api';
 import { navigate } from '~/services/navigation';
 
-import * as LoginActions from '~/store/actions/login';
-import * as RepositoriesActions from '~/store/actions/repositories';
+import { Creators as LoginActions, Types as LoginTypes } from '~/store/ducks/login';
+import { Creators as UsersActions, Types as UserTypes } from '~/store/ducks/users';
 
 function* login(action) {
   try {
@@ -16,27 +16,41 @@ function* login(action) {
     // Put: similar to dispatch
     yield put(LoginActions.loginSuccess(username));
 
-    navigate('Map');
+    navigate('Main', { username });
   } catch (err) {
     yield put(LoginActions.loginFailure());
   }
 }
 
-function* loadRepositories() {
+function* addUser(action) {
   try {
-    const { username } = yield select(state => state.login);
+    const { data } = yield call(api.get, `/users/${action.payload.user}`);
 
-    const response = yield call(api.get, `/users/${username}/repos`);
+    const isDuplicated = yield select(state => state.users.data.find(user => user.id === data.id));
 
-    yield put(RepositoriesActions.loadRepositoriesSuccess(response.data));
-  } catch (error) {
-    yield put(RepositoriesActions.loadRepositoriesFailure());
+    if (isDuplicated) {
+      yield put(UsersActions.addUserFailure('Duplicated User'));
+    } else {
+      const userData = {
+        id: data.id,
+        name: data.name,
+        avatar_url: data.avatar_url,
+        login: data.login,
+        bio: data.bio,
+        coord: action.payload.coord,
+      };
+
+      yield put(UsersActions.addUserSuccess(userData));
+      // yield put(ModalActions.hideModal());
+    }
+  } catch (err) {
+    yield put(UsersActions.addUserFailure('Error when trying to add user!'));
   }
 }
 
 export default function* rootSaga() {
   return yield all([
-    takeLatest('LOGIN_REQUEST', login),
-    takeLatest('LOAD_REPOSITORIES_REQUEST', loadRepositories),
+    takeLatest(LoginTypes.REQUEST, login),
+    takeLatest(UserTypes.ADD_REQUEST, addUser),
   ]);
 }
