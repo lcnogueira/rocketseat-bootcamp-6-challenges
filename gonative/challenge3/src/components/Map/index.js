@@ -12,9 +12,7 @@ import { MAPBOX_ACCESS_TOKEN } from 'react-native-dotenv';
 
 import { PermissionsAndroid, Alert } from 'react-native';
 
-import {
-  AnnotationContainer, Avatar, BioText, NameText, CalloutContainer,
-} from './styles';
+import { AnnotationContainer, Avatar } from './styles';
 
 MapboxGL.setAccessToken(MAPBOX_ACCESS_TOKEN);
 
@@ -63,12 +61,10 @@ class Map extends Component {
         <AnnotationContainer>
           <Avatar source={{ uri: user.avatar_url }} />
         </AnnotationContainer>
-        <MapboxGL.Callout title={`Name: ${user.login}`}>
-          <CalloutContainer>
-            <NameText>{user.name}</NameText>
-            <BioText>{user.bio}</BioText>
-          </CalloutContainer>
-        </MapboxGL.Callout>
+        <MapboxGL.Callout
+          title={`Name: ${user.name}\nBio: ${user.bio}`}
+          containterStyle={{ flex: 1, background: '#fff' }}
+        />
       </MapboxGL.PointAnnotation>
     ));
     return annotations;
@@ -87,7 +83,6 @@ class Map extends Component {
         styleURL={MapboxGL.StyleURL.Street}
         onLongPress={(location) => {
           const [long, lat] = location.geometry.coordinates;
-
           showModal({ longitude: long, latitude, lat });
         }}
       >

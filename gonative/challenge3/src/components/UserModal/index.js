@@ -32,11 +32,11 @@ function UserModal({
 
   function submitUser() {
     addUserRequest(input, coord);
-    // setInput('');
+    setInput('');
   }
 
   return (
-    <Modal visible={modal.visible} transparent animationType="slide" onRequestClose={closeModal}>
+    <Modal visible={modal.visible} transparent animationType="fade" onRequestClose={closeModal}>
       <Container>
         <ContentContainer>
           <Title>Add a new developer</Title>

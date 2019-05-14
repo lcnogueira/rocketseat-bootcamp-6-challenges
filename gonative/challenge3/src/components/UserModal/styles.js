@@ -27,15 +27,15 @@ export const TextInput = styled.TextInput`
   border-width: 1px;
   color: #999;
   font-size: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding: 10px;
 `;
 
 export const Error = styled.Text`
   color: #e37a7a;
-  font-size: 14;
+  font-size: 14px;
   font-weight: bold;
-  margin-bottom: 20;
+  margin-bottom: 15px;
   text-align: center;
 `;
 
