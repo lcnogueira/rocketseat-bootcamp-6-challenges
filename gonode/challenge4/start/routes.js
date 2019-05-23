@@ -17,4 +17,9 @@
 const Route = use('Route')
 
 Route.post('users', 'UserController.store')
+
+Route.group(() => {
+  Route.put('users', 'UserController.update')
+}).middleware(['auth'])
+
 Route.post('sessions', 'SessionController.store')
