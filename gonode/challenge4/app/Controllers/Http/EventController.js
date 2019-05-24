@@ -93,7 +93,19 @@ class EventController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy ({ params, request, response }) {}
+  async destroy ({ params, response, auth }) {
+    const event = await Event.findOrFail(params.id)
+
+    if (event.user_id !== auth.user.id) {
+      return response.status(401).send({
+        error: {
+          message: 'Only the event owner can delete it.'
+        }
+      })
+    }
+
+    await event.delete()
+  }
 }
 
 module.exports = EventController

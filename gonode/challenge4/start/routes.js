@@ -28,6 +28,7 @@ Route.group(() => {
   Route.post('events', 'EventController.store')
   Route.get('events', 'EventController.index')
   Route.get('events/:id', 'EventController.show')
+  Route.delete('events/:id', 'EventController.destroy')
 
   // Update user information
   Route.put('users', 'UserController.update')
