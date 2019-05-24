@@ -1,8 +1,9 @@
 'use strict'
 
 const Event = use('App/Models/Event')
-const Mail = use('Mail')
 const moment = require('moment')
+const Kue = use('Kue')
+const Job = use('App/Jobs/SharedEventMail')
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -115,20 +116,15 @@ class EventController {
 
       const email = request.input('email')
 
-      await Mail.send(
-        ['emails.shared_event'],
-        { event, user: auth.user.username },
-        message => {
-          message
-            .to(email)
-            .from(auth.user.email, auth.user.username)
-            .subject('An event was shared with you')
-        }
+      Kue.dispatch(
+        Job.key,
+        { email, event, sender: auth.user },
+        { attempts: 3 }
       )
     } catch (error) {
       return response
         .status(error.status)
-        .send({ error: { message: 'An error occurred' } })
+        .send({ error: { message: 'Event not found' } })
     }
   }
 }
