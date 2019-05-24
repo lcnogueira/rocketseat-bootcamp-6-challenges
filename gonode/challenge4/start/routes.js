@@ -26,6 +26,7 @@ Route.post('sessions', 'SessionController.store')
 Route.group(() => {
   // Events
   Route.post('events', 'EventController.store')
+  Route.get('events', 'EventController.index')
   Route.get('events/:id', 'EventController.show')
 
   // Update user information

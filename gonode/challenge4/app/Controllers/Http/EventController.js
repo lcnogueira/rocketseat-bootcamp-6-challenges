@@ -1,5 +1,6 @@
 'use strict'
 
+const moment = require('moment')
 const Event = use('App/Models/Event')
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
@@ -19,7 +20,16 @@ class EventController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index ({ request, response, view }) {}
+  async index ({ request }) {
+    const { page, date } = request.get()
+
+    const events = Event.query()
+      .with('user')
+      .whereRaw(`"time"::date = ?`, date)
+      .paginate(page)
+
+    return events
+  }
 
   /**
    * Create/save a new event.
@@ -61,7 +71,7 @@ class EventController {
     } catch (error) {
       return response
         .status(error.status)
-        .send({ error: { message: error.message } })
+        .send({ error: { message: 'Event not found' } })
     }
   }
 
