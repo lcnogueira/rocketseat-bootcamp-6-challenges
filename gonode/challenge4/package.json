@@ -29,6 +29,7 @@
     "@adonisjs/redis": "^2.0.7",
     "@adonisjs/validator": "^5.0.6",
     "adonis-kue": "^5.0.1",
+    "adonis-sentry": "^1.0.4",
     "moment": "^2.24.0",
     "pg": "^7.11.0"
   },
