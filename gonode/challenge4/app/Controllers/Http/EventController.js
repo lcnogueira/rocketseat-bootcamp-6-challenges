@@ -1,7 +1,8 @@
 'use strict'
 
-const moment = require('moment')
 const Event = use('App/Models/Event')
+const Mail = use('Mail')
+const moment = require('moment')
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -76,16 +77,6 @@ class EventController {
   }
 
   /**
-   * Update event details.
-   * PUT or PATCH events/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
-  async update ({ params, request, response }) {}
-
-  /**
    * Delete a event with id.
    * DELETE events/:id
    *
@@ -105,6 +96,40 @@ class EventController {
     }
 
     await event.delete()
+  }
+
+  async share ({ params, request, response, auth }) {
+    try {
+      const event = await Event.findOrFail(params.id)
+
+      if (event.user_id !== auth.user.id) {
+        return response.status(401).send({
+          error: {
+            message: 'Just the event owner can share it'
+          }
+        })
+      }
+
+      event.formatted_date = moment(event.time).format('YYYY-MM-DD')
+      event.formatted_time = moment(event.time).format('LTS')
+
+      const email = request.input('email')
+
+      await Mail.send(
+        ['emails.shared_event'],
+        { event, user: auth.user.username },
+        message => {
+          message
+            .to(email)
+            .from(auth.user.email, auth.user.username)
+            .subject('An event was shared with you')
+        }
+      )
+    } catch (error) {
+      return response
+        .status(error.status)
+        .send({ error: { message: 'An error occurred' } })
+    }
   }
 }
 
