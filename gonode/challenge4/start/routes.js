@@ -16,10 +16,18 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
+// Users
 Route.post('users', 'UserController.store')
 
+// Sessions
+Route.post('sessions', 'SessionController.store')
+
+// Protected routes
 Route.group(() => {
+  // Events
+  Route.post('events', 'EventController.store')
+  Route.get('events/:id', 'EventController.show')
+
+  // Update user information
   Route.put('users', 'UserController.update')
 }).middleware(['auth'])
-
-Route.post('sessions', 'SessionController.store')
