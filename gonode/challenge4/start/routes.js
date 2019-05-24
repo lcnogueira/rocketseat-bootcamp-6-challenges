@@ -25,10 +25,7 @@ Route.post('sessions', 'SessionController.store')
 // Protected routes
 Route.group(() => {
   // Events
-  Route.post('events', 'EventController.store')
-  Route.get('events', 'EventController.index')
-  Route.get('events/:id', 'EventController.show')
-  Route.delete('events/:id', 'EventController.destroy')
+  Route.resource('events', 'EventController').apiOnly()
 
   Route.post('events/:id/share', 'EventController.share')
 
