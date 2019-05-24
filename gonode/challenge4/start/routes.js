@@ -16,16 +16,18 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-// Users
-Route.post('users', 'UserController.store')
+// Create a User
+Route.post('users', 'UserController.store').validator('User')
 
-// Sessions
-Route.post('sessions', 'SessionController.store')
+// Create a Session
+Route.post('sessions', 'SessionController.store').validator('Session')
 
 // Protected routes
 Route.group(() => {
   // Events
-  Route.resource('events', 'EventController').apiOnly()
+  Route.resource('events', 'EventController')
+    .apiOnly()
+    .validator(new Map([[['events.store'], ['Event']]]))
 
   Route.post('events/:id/share', 'EventController.share')
 
