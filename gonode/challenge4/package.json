@@ -2,9 +2,10 @@
   "name": "adonis-api-app",
   "version": "4.1.0",
   "adonis-version": "4.1.0",
-  "description": "Adonisjs boilerplate for API server with pre-configured JWT",
+  "description": "Adonis events API",
   "main": "index.js",
   "scripts": {
+    "dev": "adonis serve --dev",
     "start": "node server.js",
     "test": "node ace test"
   },
@@ -12,7 +13,7 @@
     "adonisjs",
     "adonis-app"
   ],
-  "author": "",
+  "author": "Luiz Cláudio <luizcns18@gmail.com>",
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {

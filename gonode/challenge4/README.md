@@ -1,28 +1,38 @@
-# Adonis API application
+# Challenge 4 - Adonis Events API (Forth Node Module)
 
-This is the boilerplate for creating an API server in AdonisJs, it comes pre-configured with.
+For this challenge, you should create a REST API by using AdonisJS to schedule events.
 
-1. Bodyparser
-2. Authentication
-3. CORS
-4. Lucid ORM
-5. Migrations and seeds
+## Requirements
 
-## Setup
+- The user should be able to:
+  - Create an account with name, email, and password;
+  - Authenticate himself with his email and password;
+  - Update his name and password, by inserting the old password, new password, and password confirmation;
+  - Register events with title, localization, date and time;
+  - List events by date;
+  - Delete an event;
+  - Share an event by providing the recipient email. The recipient should receive all the event information by email
+- Use `Redis` to queue the e-mails that have to be sent;
+- The user e-mail should be unique;
+- The user shouldn't be able to register 2 events at the same date and time;
+- The user can only see/edit/delete the own events;
+- The user can't edit/delete a past event;
+- All the fields should be validated and return readable messages.
 
-Use the adonis command to install the blueprint
+## How to start the API
 
-```bash
-adonis new yardstick --api-only
-```
+1. Clone the project;
+2. Fill in the fields in the `.env.example` file;
+3. Rename the `.env.example` file to `env`;
+4. Install the project dependencies: `yarn install`;
+5. Start the server: `yarn dev` (or `adonis serve --dev`).
 
-or manually clone the repo and then run `npm install`.
+### Skills
 
+NodeJS, AdonisJS, Redis, Sentry
 
-### Migrations
+## Preview
 
-Run the following command to run startup migrations.
+### Adonis
 
-```js
-adonis migration:run
-```
+This project was bootstrapped with [Adonisjs Framework](https://adonisjs.com/).
