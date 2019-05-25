@@ -130,8 +130,6 @@ class EventController {
       }
     }
 
-    console.log(data)
-
     event.merge(data)
 
     await event.save()

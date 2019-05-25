@@ -22,6 +22,14 @@ Route.post('users', 'UserController.store').validator('User')
 // Create a Session
 Route.post('sessions', 'SessionController.store').validator('Session')
 
+// Passwords
+Route.post('passwords', 'ForgotPasswordController.store').validator(
+  'ForgotPassword'
+)
+Route.put('passwords', 'ForgotPasswordController.update').validator(
+  'ResetPassword'
+)
+
 // Protected routes
 Route.group(() => {
   // Events

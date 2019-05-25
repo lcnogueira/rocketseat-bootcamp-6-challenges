@@ -2,7 +2,7 @@
 
 const Mail = use('Mail')
 
-class SharedEventMail {
+class ForgotPasswordMail {
   // If this getter isn't provided, it will default to 1.
   // Increase this number to increase processing concurrency.
   static get concurrency () {
@@ -11,22 +11,22 @@ class SharedEventMail {
 
   // This is required. This is a unique key used to identify this job.
   static get key () {
-    return 'SharedEventMail-job'
+    return 'ForgotPasswordMail-job'
   }
 
   // This is where the work is done.
-  async handle ({ email, event, sender }) {
+  async handle ({ email, token, link }) {
     await Mail.send(
-      ['emails.shared_event'],
-      { event, user: sender.username },
+      ['emails.forgot_password'],
+      { email, token, link },
       message => {
         message
           .to(email)
-          .from(sender.email, sender.username)
-          .subject('An event was shared with you')
+          .from('contato@rocketseat.com.br', 'Luiz | Rocketseat')
+          .subject('Password reset')
       }
     )
   }
 }
 
-module.exports = SharedEventMail
+module.exports = ForgotPasswordMail
