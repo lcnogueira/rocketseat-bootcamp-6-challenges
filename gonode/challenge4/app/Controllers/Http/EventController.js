@@ -106,6 +106,16 @@ class EventController {
       })
     }
 
+    const passed = moment().isAfter(event.time)
+
+    if (passed) {
+      return response.status(401).send({
+        error: {
+          message: 'You can not delete past events.'
+        }
+      })
+    }
+
     await event.delete()
   }
 
