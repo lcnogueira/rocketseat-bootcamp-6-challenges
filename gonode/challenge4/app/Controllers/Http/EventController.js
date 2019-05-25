@@ -44,6 +44,16 @@ class EventController {
   async store ({ request, response, auth }) {
     const data = request.all(['title', 'place', 'time'])
 
+    const existingEvent = await Event.findBy('time', data.time)
+
+    if (existingEvent) {
+      return response.status(401).send({
+        error: {
+          message: 'There is another event at this time already.'
+        }
+      })
+    }
+
     const event = await Event.create({ ...data, user_id: auth.user.id })
 
     return event
