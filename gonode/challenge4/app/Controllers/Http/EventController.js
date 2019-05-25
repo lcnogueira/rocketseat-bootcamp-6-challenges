@@ -49,7 +49,7 @@ class EventController {
     if (existingEvent) {
       return response.status(401).send({
         error: {
-          message: 'There is another event at this time already.'
+          message: 'There is another event at this time already'
         }
       })
     }
@@ -87,6 +87,57 @@ class EventController {
     }
   }
 
+  /**
+   * Update event details.
+   * PUT or PATCH events/:id
+   *
+   * @param {object} ctx
+   * @param {Request} ctx.request
+   * @param {Response} ctx.response
+   */
+  async update ({ params, request, response, auth }) {
+    const event = await Event.findOrFail(params.id)
+
+    if (event.user_id !== auth.user.id) {
+      return response.status(401).send({
+        error: {
+          message: 'Only the event owner can edit it'
+        }
+      })
+    }
+
+    const passed = moment().isAfter(event.time)
+
+    if (passed) {
+      return response.status(401).send({
+        error: {
+          message: 'You can not edit past events'
+        }
+      })
+    }
+
+    const data = request.only(['title', 'place', 'time'])
+
+    if (data.time) {
+      const existingEvent = await Event.findBy('time', data.time)
+
+      if (existingEvent && existingEvent.id !== Number(params.id)) {
+        return response.status(401).send({
+          error: {
+            message: 'There is another event at this time already'
+          }
+        })
+      }
+    }
+
+    console.log(data)
+
+    event.merge(data)
+
+    await event.save()
+
+    return event
+  }
   /**
    * Delete a event with id.
    * DELETE events/:id
