@@ -25,11 +25,12 @@ For this challenge, you should create a REST API by using AdonisJS to schedule e
 2. Fill in the fields in the `.env.example` file;
 3. Rename the `.env.example` file to `env`;
 4. Install the project dependencies: `yarn install`;
-5. Start the server: `yarn dev` (or `adonis serve --dev`).
+5. Start the server: `yarn dev` (or `adonis serve --dev`);
+6. Start an instance of the job listener: `adonis kue:listen`.
 
 ### Skills
 
-NodeJS, AdonisJS, Redis, Sentry
+NodeJS, AdonisJS, Redis, Sentry, JWT.
 
 ## Preview
 
