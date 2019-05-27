@@ -30,7 +30,7 @@ test('Create an user', async ({ assert, client }) => {
     email: 'luizcns18@gmail.com'
   })
 
-  const user = await User.find(1)
+  const user = await User.findBy('username', 'lcnogueira')
   assert.equal(user.toJSON().email, 'luizcns18@gmail.com')
 
   // Mail.restore()
