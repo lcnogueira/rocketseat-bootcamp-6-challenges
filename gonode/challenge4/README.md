@@ -24,9 +24,14 @@ For this challenge, you should create a REST API by using AdonisJS to schedule e
 1. Clone the project;
 2. Fill in the fields in the `.env.example` file;
 3. Rename the `.env.example` file to `env`;
-4. Install the project dependencies: `yarn install`;
-5. Start the server: `yarn dev` (or `adonis serve --dev`);
+4. Install the project dependencies: `npm install`;
+5. Start the server: `npm dev` (or `adonis serve --dev`);
 6. Start an instance of the job listener: `adonis kue:listen`.
+7. Send requests to the API address set in the `.env` file (`localhost:3333` by default).
+
+## Running the tests
+
+You can do `npm test` or `adonis test` to run the tests.
 
 ### Skills
 
