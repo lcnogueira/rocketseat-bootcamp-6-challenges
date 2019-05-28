@@ -16,11 +16,15 @@ import ClockIcon from '../../assets/images/clock.svg';
 import PlusIcon from '../../assets/images/plus.svg';
 
 class Playlist extends Component {
+  static defaultProps = {
+    currentSong: null,
+  };
+
   static propTypes = {
     getPlaylistDetailsRequest: PropTypes.func.isRequired,
     match: PropTypes.shape({
       params: PropTypes.shape({
-        id: PropTypes.number,
+        id: PropTypes.string,
       }),
     }).isRequired,
     playlistDetails: PropTypes.shape({
@@ -42,7 +46,7 @@ class Playlist extends Component {
     loadSong: PropTypes.func.isRequired,
     currentSong: PropTypes.shape({
       id: PropTypes.number,
-    }).isRequired,
+    }),
   };
 
   state = {
@@ -89,13 +93,15 @@ class Playlist extends Component {
 
         <SongList cellPadding={0} cellSpacing={0}>
           <thead>
-            <th />
-            <th>Title</th>
-            <th>Artist</th>
-            <th>Album</th>
-            <th>
-              <img src={ClockIcon} alt="Time" />{' '}
-            </th>
+            <tr>
+              <th />
+              <th>Title</th>
+              <th>Artist</th>
+              <th>Album</th>
+              <th>
+                <img src={ClockIcon} alt="Time" />{' '}
+              </th>
+            </tr>
           </thead>
           <tbody>
             {!playlist.songs ? (
