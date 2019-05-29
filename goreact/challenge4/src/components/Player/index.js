@@ -113,6 +113,12 @@ const Player = ({
   </Container>
 );
 
+Player.defaultProps = {
+  position: null,
+  duration: null,
+  positionShown: null,
+};
+
 Player.propTypes = {
   player: PropTypes.shape({
     currentSong: PropTypes.shape({
@@ -128,11 +134,11 @@ Player.propTypes = {
   prev: PropTypes.func.isRequired,
   next: PropTypes.func.isRequired,
   playing: PropTypes.func.isRequired,
-  position: PropTypes.string.isRequired,
-  duration: PropTypes.string.isRequired,
+  position: PropTypes.string,
+  duration: PropTypes.string,
   handlePosition: PropTypes.func.isRequired,
   setPosition: PropTypes.func.isRequired,
-  positionShown: PropTypes.string.isRequired,
+  positionShown: PropTypes.string,
   progress: PropTypes.number.isRequired,
   setVolume: PropTypes.func.isRequired,
 };
