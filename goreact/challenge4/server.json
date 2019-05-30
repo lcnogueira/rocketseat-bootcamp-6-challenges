@@ -2,7 +2,7 @@
   "playlists": [
     {
       "id": 1,
-      "title": "Saudade das antigas",
+      "title": "Old ones",
       "description": "Músicas antigas que vão te lembrar dos melhores momentos.",
       "thumbnail": "https://s3-sa-east-1.amazonaws.com/gonative/linkin_park.jpg"
     },
@@ -20,7 +20,7 @@
     },
     {
       "id": 4,
-      "title": "Só elas",
+      "title": "Loved Ones",
       "description": "As melhores cantoras POP reunidas em uma playlist pra você.",
       "thumbnail": "https://s3-sa-east-1.amazonaws.com/gonative/linkin_park.jpg"
     }

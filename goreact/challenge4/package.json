@@ -21,6 +21,7 @@
     "styled-components": "^4.2.0"
   },
   "scripts": {
+    "dev": "json-server server.json -p 3001 -w -d 500 & yarn run start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

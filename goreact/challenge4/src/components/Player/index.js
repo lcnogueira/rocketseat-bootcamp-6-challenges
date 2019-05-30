@@ -105,7 +105,7 @@ const Player = ({
       <Slider
         railStyle={{ background: '#404040', borderRadius: 10 }}
         trackStyle={{ background: '#fff' }}
-        handleStyle={{ display: 'none' }}
+        handleStyle={{ border: 0 }}
         value={player.volume}
         onChange={setVolume}
       />
