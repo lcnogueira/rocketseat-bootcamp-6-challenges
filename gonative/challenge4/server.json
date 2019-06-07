@@ -2,27 +2,27 @@
   "categories": [
     {
       "id": 1,
-      "title": "Camisetas"
+      "title": "T-shirts"
     },
     {
       "id": 2,
-      "title": "Camisas"
+      "title": "Shirts"
     },
     {
       "id": 3,
-      "title": "Calças"
+      "title": "Pants"
     },
     {
       "id": 4,
-      "title": "Blusas"
+      "title": "Blouses"
     },
     {
       "id": 5,
-      "title": "Bonés"
+      "title": "Hats"
     },
     {
       "id": 6,
-      "title": "Casacos"
+      "title": "Coats"
     }
   ],
   "category_products": [
@@ -31,28 +31,28 @@
       "products": [
         {
           "id": 1,
-          "name": "Camiseta Hyperas Preta",
+          "name": "Black Hyperas T-shirt",
           "brand": "Quiksilver",
           "image": "https://t-static.dafiti.com.br/czCvp3wBNPfehf7omYZfJacnxPY=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fquiksilver-camiseta-quiksilver-hyperas-preta-8710-7136243-1-product.jpg",
           "price": 49.99
         },
         {
           "id": 2,
-          "name": "Camiseta Double Tap Preta",
+          "name": "Black Double Tap T-shirt",
           "brand": "Quiksilver",
           "image": "https://t-static.dafiti.com.br/EpEXepU-tSbgo6ZMl4Y5BOdjelw=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fquiksilver-camiseta-quiksilver-double-tap-preta-7115-8165043-1-product.jpg",
           "price": 59.99
         },
         {
           "id": 3,
-          "name": "Camiseta Logo Azul",
+          "name": "Blue Logo T-shirt",
           "brand": "Red Bull",
           "image": "https://t-static.dafiti.com.br/aC9871vKWfL3bDgbhLx5sFLa7xs=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fred-bull-camiseta-red-bull-logo-azul-0272-7714033-1-product.jpg",
           "price": 54.99
         },
         {
           "id": 4,
-          "name": "Camiseta Primo Tipper",
+          "name": "Tipper Primo T-shirt",
           "brand": "Rip Curl",
           "image": "https://t-static.dafiti.com.br/weG0u9eKZ4KBV-G0XFOQ5hoY4eI=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2frip-curl-camiseta-rip-curl-primo-tipper-preto-8138-3441052-1-product.jpg",
           "price": 39.99
@@ -64,28 +64,28 @@
       "products": [
         {
           "id": 2,
-          "name": "Camiseta Double Tap Preta",
+          "name": "Black Double Tap Shirt",
           "brand": "Quiksilver",
           "image": "https://t-static.dafiti.com.br/EpEXepU-tSbgo6ZMl4Y5BOdjelw=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fquiksilver-camiseta-quiksilver-double-tap-preta-7115-8165043-1-product.jpg",
           "price": 59.99
         },
         {
           "id": 3,
-          "name": "Camiseta Logo Azul",
+          "name": "Blue Logo Shirt",
           "brand": "Red Bull",
           "image": "https://t-static.dafiti.com.br/aC9871vKWfL3bDgbhLx5sFLa7xs=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fred-bull-camiseta-red-bull-logo-azul-0272-7714033-1-product.jpg",
           "price": 54.99
         },
         {
           "id": 1,
-          "name": "Camiseta Hyperas Preta",
+          "name": "Black Hyperas Shirt",
           "brand": "Quiksilver",
           "image": "https://t-static.dafiti.com.br/czCvp3wBNPfehf7omYZfJacnxPY=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fquiksilver-camiseta-quiksilver-hyperas-preta-8710-7136243-1-product.jpg",
           "price": 49.99
         },
         {
           "id": 4,
-          "name": "Camiseta Primo Tipper",
+          "name": "Tipper Primo Shirt",
           "brand": "Rip Curl",
           "image": "https://t-static.dafiti.com.br/weG0u9eKZ4KBV-G0XFOQ5hoY4eI=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2frip-curl-camiseta-rip-curl-primo-tipper-preto-8138-3441052-1-product.jpg",
           "price": 39.99
@@ -97,28 +97,28 @@
       "products": [
         {
           "id": 4,
-          "name": "Camiseta Primo Tipper",
+          "name": "Tipper Primo Shirt",
           "brand": "Rip Curl",
           "image": "https://t-static.dafiti.com.br/weG0u9eKZ4KBV-G0XFOQ5hoY4eI=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2frip-curl-camiseta-rip-curl-primo-tipper-preto-8138-3441052-1-product.jpg",
           "price": 39.99
         },
         {
           "id": 2,
-          "name": "Camiseta Double Tap Preta",
+          "name": "Black Double Tap Shirt",
           "brand": "Quiksilver",
           "image": "https://t-static.dafiti.com.br/EpEXepU-tSbgo6ZMl4Y5BOdjelw=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fquiksilver-camiseta-quiksilver-double-tap-preta-7115-8165043-1-product.jpg",
           "price": 59.99
         },
         {
           "id": 3,
-          "name": "Camiseta Logo Azul",
+          "name": "Blue Logo Shirt",
           "brand": "Red Bull",
           "image": "https://t-static.dafiti.com.br/aC9871vKWfL3bDgbhLx5sFLa7xs=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fred-bull-camiseta-red-bull-logo-azul-0272-7714033-1-product.jpg",
           "price": 54.99
         },
         {
           "id": 1,
-          "name": "Camiseta Hyperas Preta",
+          "name": "Black Hyperas Shirt",
           "brand": "Quiksilver",
           "image": "https://t-static.dafiti.com.br/czCvp3wBNPfehf7omYZfJacnxPY=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fquiksilver-camiseta-quiksilver-hyperas-preta-8710-7136243-1-product.jpg",
           "price": 49.99
@@ -130,28 +130,28 @@
       "products": [
         {
           "id": 2,
-          "name": "Camiseta Double Tap Preta",
+          "name": "Black Double Tap Shirt",
           "brand": "Quiksilver",
           "image": "https://t-static.dafiti.com.br/EpEXepU-tSbgo6ZMl4Y5BOdjelw=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fquiksilver-camiseta-quiksilver-double-tap-preta-7115-8165043-1-product.jpg",
           "price": 59.99
         },
         {
           "id": 3,
-          "name": "Camiseta Logo Azul",
+          "name": "Blue Logo Shirt",
           "brand": "Red Bull",
           "image": "https://t-static.dafiti.com.br/aC9871vKWfL3bDgbhLx5sFLa7xs=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fred-bull-camiseta-red-bull-logo-azul-0272-7714033-1-product.jpg",
           "price": 54.99
         },
         {
           "id": 4,
-          "name": "Camiseta Primo Tipper",
+          "name": "Tipper Primo Shirt",
           "brand": "Rip Curl",
           "image": "https://t-static.dafiti.com.br/weG0u9eKZ4KBV-G0XFOQ5hoY4eI=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2frip-curl-camiseta-rip-curl-primo-tipper-preto-8138-3441052-1-product.jpg",
           "price": 39.99
         },
         {
           "id": 1,
-          "name": "Camiseta Hyperas Preta",
+          "name": "Black Hyperas Shirt",
           "brand": "Quiksilver",
           "image": "https://t-static.dafiti.com.br/czCvp3wBNPfehf7omYZfJacnxPY=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fquiksilver-camiseta-quiksilver-hyperas-preta-8710-7136243-1-product.jpg",
           "price": 49.99
@@ -163,28 +163,28 @@
       "products": [
         {
           "id": 1,
-          "name": "Camiseta Hyperas Preta",
+          "name": "Black Hyperas Shirt",
           "brand": "Quiksilver",
           "image": "https://t-static.dafiti.com.br/czCvp3wBNPfehf7omYZfJacnxPY=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fquiksilver-camiseta-quiksilver-hyperas-preta-8710-7136243-1-product.jpg",
           "price": 49.99
         },
         {
           "id": 2,
-          "name": "Camiseta Double Tap Preta",
+          "name": "Black Double Tap Shirt",
           "brand": "Quiksilver",
           "image": "https://t-static.dafiti.com.br/EpEXepU-tSbgo6ZMl4Y5BOdjelw=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fquiksilver-camiseta-quiksilver-double-tap-preta-7115-8165043-1-product.jpg",
           "price": 59.99
         },
         {
           "id": 3,
-          "name": "Camiseta Logo Azul",
+          "name": "Blue Logo Shirt",
           "brand": "Red Bull",
           "image": "https://t-static.dafiti.com.br/aC9871vKWfL3bDgbhLx5sFLa7xs=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fred-bull-camiseta-red-bull-logo-azul-0272-7714033-1-product.jpg",
           "price": 54.99
         },
         {
           "id": 4,
-          "name": "Camiseta Primo Tipper",
+          "name": "Tipper Primo Shirt",
           "brand": "Rip Curl",
           "image": "https://t-static.dafiti.com.br/weG0u9eKZ4KBV-G0XFOQ5hoY4eI=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2frip-curl-camiseta-rip-curl-primo-tipper-preto-8138-3441052-1-product.jpg",
           "price": 39.99
@@ -196,28 +196,28 @@
       "products": [
         {
           "id": 2,
-          "name": "Camiseta Double Tap Preta",
+          "name": "Black Double Tap Shirt",
           "brand": "Quiksilver",
           "image": "https://t-static.dafiti.com.br/EpEXepU-tSbgo6ZMl4Y5BOdjelw=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fquiksilver-camiseta-quiksilver-double-tap-preta-7115-8165043-1-product.jpg",
           "price": 59.99
         },
         {
           "id": 3,
-          "name": "Camiseta Logo Azul",
+          "name": "Blue Logo Shirt",
           "brand": "Red Bull",
           "image": "https://t-static.dafiti.com.br/aC9871vKWfL3bDgbhLx5sFLa7xs=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fred-bull-camiseta-red-bull-logo-azul-0272-7714033-1-product.jpg",
           "price": 54.99
         },
         {
           "id": 1,
-          "name": "Camiseta Hyperas Preta",
+          "name": "Black Hyperas Shirt",
           "brand": "Quiksilver",
           "image": "https://t-static.dafiti.com.br/czCvp3wBNPfehf7omYZfJacnxPY=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fquiksilver-camiseta-quiksilver-hyperas-preta-8710-7136243-1-product.jpg",
           "price": 49.99
         },
         {
           "id": 4,
-          "name": "Camiseta Primo Tipper",
+          "name": "Tipper Primo Shirt",
           "brand": "Rip Curl",
           "image": "https://t-static.dafiti.com.br/weG0u9eKZ4KBV-G0XFOQ5hoY4eI=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2frip-curl-camiseta-rip-curl-primo-tipper-preto-8138-3441052-1-product.jpg",
           "price": 39.99
@@ -228,28 +228,28 @@
   "products": [
     {
       "id": 1,
-      "name": "Camiseta Hyperas Preta",
+      "name": "Black Hyperas Shirt",
       "brand": "Quiksilver",
       "image": "https://t-static.dafiti.com.br/czCvp3wBNPfehf7omYZfJacnxPY=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fquiksilver-camiseta-quiksilver-hyperas-preta-8710-7136243-1-product.jpg",
       "price": 49.99
     },
     {
       "id": 2,
-      "name": "Camiseta Double Tap Preta",
+      "name": "Black Double Tap Shirt",
       "brand": "Quiksilver",
       "image": "https://t-static.dafiti.com.br/EpEXepU-tSbgo6ZMl4Y5BOdjelw=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fquiksilver-camiseta-quiksilver-double-tap-preta-7115-8165043-1-product.jpg",
       "price": 59.99
     },
     {
       "id": 3,
-      "name": "Camiseta Logo Azul",
-      "brand": "Red Bull",
+      "name": "Blue Logo Shirt",
+      "brand": "Shirt",
       "image": "https://t-static.dafiti.com.br/aC9871vKWfL3bDgbhLx5sFLa7xs=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fred-bull-camiseta-red-bull-logo-azul-0272-7714033-1-product.jpg",
       "price": 54.99
     },
     {
       "id": 4,
-      "name": "Camiseta Primo Tipper",
+      "name": "Tipper Primo Shirt",
       "brand": "Rip Curl",
       "image": "https://t-static.dafiti.com.br/weG0u9eKZ4KBV-G0XFOQ5hoY4eI=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2frip-curl-camiseta-rip-curl-primo-tipper-preto-8138-3441052-1-product.jpg",
       "price": 39.99
