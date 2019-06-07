@@ -1,45 +1,37 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import {
   Container, CategoryBar, CategoriesList, Category, Title,
 } from './styles';
 
-const categories = [
-  {
-    id: 1,
-    title: 'Camisetas',
-  },
-  {
-    id: 2,
-    title: 'Camisas',
-  },
-  {
-    id: 3,
-    title: 'Calças',
-  },
-  {
-    id: 4,
-    title: 'Blusas',
-  },
-  {
-    id: 5,
-    title: 'Bonés',
-  },
-  {
-    id: 6,
-    title: 'Casacos',
-  },
-];
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import CategoriesActions from '~/store/ducks/categories';
 
 class Categories extends Component {
-  componentDidMount() {}
+  static propTypes = {
+    loadCategoriesRequest: PropTypes.func.isRequired,
+    categories: PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+    }).isRequired,
+  };
+
+  componentDidMount() {
+    const { loadCategoriesRequest } = this.props;
+
+    loadCategoriesRequest();
+  }
 
   render() {
+    const { categories } = this.props;
+
     return (
       <Container>
         <CategoryBar>
           <CategoriesList
-            data={categories}
+            data={categories.data}
             keyExtractor={category => String(category.id)}
             showsHorizontalScrollIndicator={false}
             horizontal
@@ -55,4 +47,13 @@ class Categories extends Component {
   }
 }
 
-export default Categories;
+const mapStateToProps = state => ({
+  categories: state.categories,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(CategoriesActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Categories);

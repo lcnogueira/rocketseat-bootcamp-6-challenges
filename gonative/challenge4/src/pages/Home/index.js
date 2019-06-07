@@ -17,7 +17,7 @@ class Home extends Component {
     navigation: PropTypes.shape({
       navigate: PropTypes.func,
     }).isRequired,
-    loadRequest: PropTypes.func.isRequired,
+    loadProductsRequest: PropTypes.func.isRequired,
     products: PropTypes.shape({
       data: PropTypes.arrayOf(
         PropTypes.shape({
@@ -40,9 +40,9 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    const { loadRequest } = this.props;
+    const { loadProductsRequest } = this.props;
 
-    loadRequest();
+    loadProductsRequest();
   }
 
   takeToProduct = (product) => {
