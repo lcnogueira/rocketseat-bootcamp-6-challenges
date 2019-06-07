@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  Container, CategoryBar, CategoriesList, Category, Title,
+  Container, CategoryBar, CategoriesList, Category, Title, Loading,
 } from './styles';
 
 import { connect } from 'react-redux';
@@ -30,17 +30,21 @@ class Categories extends Component {
     return (
       <Container>
         <CategoryBar>
-          <CategoriesList
-            data={categories.data}
-            keyExtractor={category => String(category.id)}
-            showsHorizontalScrollIndicator={false}
-            horizontal
-            renderItem={({ item: category }) => (
-              <Category onPress={() => {}} active={category.id === 1}>
-                <Title active={category.id === 1}>{category.title}</Title>
-              </Category>
-            )}
-          />
+          {categories.loading ? (
+            <Loading />
+          ) : (
+            <CategoriesList
+              data={categories.data}
+              keyExtractor={category => String(category.id)}
+              showsHorizontalScrollIndicator={false}
+              horizontal
+              renderItem={({ item: category }) => (
+                <Category onPress={() => {}} active={category.id === 1}>
+                  <Title active={category.id === 1}>{category.title}</Title>
+                </Category>
+              )}
+            />
+          )}
         </CategoryBar>
       </Container>
     );

@@ -10,6 +10,8 @@ export const Container = styled.View`
 export const CategoryBar = styled.View`
   height: 54px;
   background-color: ${colors.secondary};
+  display: flex;
+  justify-content: center;
 `;
 
 export const CategoriesList = styled.FlatList`
@@ -29,4 +31,11 @@ export const Title = styled.Text`
   color: ${colors.white};
   font-weight: bold;
   text-transform: uppercase;
+`;
+
+export const Loading = styled.ActivityIndicator.attrs({
+  size: 'small',
+  color: `${colors.white}`,
+})`
+  font-weight: bold;
 `;
