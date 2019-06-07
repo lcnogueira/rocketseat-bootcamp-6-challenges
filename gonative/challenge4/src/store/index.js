@@ -1,16 +1,25 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
 import rootReducer from './ducks';
 import rootSaga from './sagas';
 
-const middlewares = [];
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['cart'],
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // eslint-disable-next-line no-console
 const sagaMonitor = __DEV__ ? console.tron.createSagaMonitor() : null;
 const saglaMiddleware = createSagaMiddleware({ sagaMonitor });
 
-middlewares.push(saglaMiddleware);
+const middlewares = [saglaMiddleware];
 
 const composer = __DEV__
   ? compose(
@@ -20,8 +29,9 @@ const composer = __DEV__
   )
   : applyMiddleware(...middlewares);
 
-const store = createStore(rootReducer, composer);
+const store = createStore(persistedReducer, composer);
+const persistor = persistStore(store);
 
 saglaMiddleware.run(rootSaga);
 
-export default store;
+export { store, persistor };

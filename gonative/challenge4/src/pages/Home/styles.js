@@ -21,7 +21,7 @@ export const ProductsList = styled.FlatList.attrs({
 export const ProductItem = styled.TouchableOpacity.attrs({
   activeOpacity: 0.6,
 })`
-  max-width: ${(metrics.screenWidth - 50) / 2}px;
+  width: ${(metrics.screenWidth - 50) / 2}px;
   margin-top: ${metrics.baseMargin}px;
   padding: ${metrics.baseMargin}px;
   background-color: ${colors.white};

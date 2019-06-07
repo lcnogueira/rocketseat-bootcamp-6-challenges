@@ -1,8 +1,9 @@
-import { all } from 'redux-saga/effects';
+import { all, takeLatest } from 'redux-saga/effects';
 
-// import api from '~/services/api';
-// import { navigate } from '~/services/navigation';
+import { ProductsTypes } from '~/store/ducks/products';
+
+import { load } from './products';
 
 export default function* rootSaga() {
-  return yield all([]);
+  return yield all([takeLatest(ProductsTypes.LOAD_REQUEST, load)]);
 }
