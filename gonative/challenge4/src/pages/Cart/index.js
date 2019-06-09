@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 
@@ -23,6 +24,21 @@ import {
 } from './styles';
 
 class Cart extends Component {
+  static propTypes = {
+    cart: PropTypes.shape({
+      data: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number,
+          image: PropTypes.string,
+          name: PropTypes.string,
+          brand: PropTypes.string,
+          price: PropTypes.number,
+          quantity: PropTypes.number,
+        }),
+      ),
+    }).isRequired,
+  };
+
   static navigationOptions = {
     title: 'Cart',
     headerTintColor: colors.secondary,
@@ -37,7 +53,7 @@ class Cart extends Component {
   };
 
   render() {
-    const { cart } = this.props;
+    const { cart, total } = this.props;
 
     return (
       <Container>
@@ -79,7 +95,7 @@ class Cart extends Component {
             />
             <SubTotal>
               <SubTotalText>Subtotal</SubTotalText>
-              <SubTotalPrice>$ 200.00</SubTotalPrice>
+              <SubTotalPrice>{total}</SubTotalPrice>
             </SubTotal>
           </Fragment>
         ) : (
