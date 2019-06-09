@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
+import { connect } from 'react-redux';
+
 import { colors } from '~./styles';
 import {
   Container,
@@ -20,63 +22,6 @@ import {
   SubTotalPrice,
 } from './styles';
 
-const fakeData = [
-  {
-    id: 2,
-    name: 'Camiseta Double Tap Preta',
-    brand: 'Quiksilver',
-    image:
-      'https://t-static.dafiti.com.br/EpEXepU-tSbgo6ZMl4Y5BOdjelw=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fquiksilver-camiseta-quiksilver-double-tap-preta-7115-8165043-1-product.jpg',
-    price: 59.99,
-    quantity: 2,
-  },
-  {
-    id: 3,
-    name: 'Camiseta Logo Azul',
-    brand: 'Red Bull',
-    image:
-      'https://t-static.dafiti.com.br/aC9871vKWfL3bDgbhLx5sFLa7xs=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fred-bull-camiseta-red-bull-logo-azul-0272-7714033-1-product.jpg',
-    price: 54.99,
-    quantity: 2,
-  },
-  {
-    id: 1,
-    name: 'Camiseta Hyperas Preta',
-    brand: 'Quiksilver',
-    image:
-      'https://t-static.dafiti.com.br/czCvp3wBNPfehf7omYZfJacnxPY=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fquiksilver-camiseta-quiksilver-hyperas-preta-8710-7136243-1-product.jpg',
-    price: 49.99,
-    quantity: 10,
-  },
-  {
-    id: 4,
-    name: 'Camiseta Primo Tipper',
-    brand: 'Rip Curl',
-    image:
-      'https://t-static.dafiti.com.br/weG0u9eKZ4KBV-G0XFOQ5hoY4eI=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2frip-curl-camiseta-rip-curl-primo-tipper-preto-8138-3441052-1-product.jpg',
-    price: 39.99,
-    quantity: 3,
-  },
-  {
-    id: 5,
-    name: 'Camiseta Double Tap Preta',
-    brand: 'Quiksilver',
-    image:
-      'https://t-static.dafiti.com.br/EpEXepU-tSbgo6ZMl4Y5BOdjelw=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fquiksilver-camiseta-quiksilver-double-tap-preta-7115-8165043-1-product.jpg',
-    price: 59.99,
-    quantity: 2,
-  },
-  {
-    id: 6,
-    name: 'Camiseta Logo Azul',
-    brand: 'Red Bull',
-    image:
-      'https://t-static.dafiti.com.br/aC9871vKWfL3bDgbhLx5sFLa7xs=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fred-bull-camiseta-red-bull-logo-azul-0272-7714033-1-product.jpg',
-    price: 54.99,
-    quantity: 2,
-  },
-];
-
 class Cart extends Component {
   static navigationOptions = {
     title: 'Cart',
@@ -92,12 +37,14 @@ class Cart extends Component {
   };
 
   render() {
+    const { cart } = this.props;
+
     return (
       <Container>
-        {fakeData.length > 0 ? (
+        {cart.data.length > 0 ? (
           <Fragment>
             <CartList
-              data={fakeData}
+              data={cart.data}
               keyExtractor={product => String(product.id)}
               showsVerticalScrollIndicator={false}
               renderItem={({ item: product }) => (
@@ -143,4 +90,12 @@ class Cart extends Component {
   }
 }
 
-export default Cart;
+const mapStateToProps = state => ({
+  cart: state.cart,
+  total: state.cart.data.reduce(
+    (total, product) => total + product.price * product.quantity,
+    0,
+  ),
+});
+
+export default connect(mapStateToProps)(Cart);
