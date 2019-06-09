@@ -94,7 +94,7 @@ class Cart extends Component {
                       {product.amount}
                     </AmountInput>
                     <DeleteButton onPress={() => this.confirmDelete(product)}>
-                      <DeleteIcon name="times" />
+                      <DeleteIcon />
                     </DeleteButton>
                   </Form>
                 </CartItem>

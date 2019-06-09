@@ -80,6 +80,7 @@ export const DeleteButton = styled.TouchableOpacity`
 export const DeleteIcon = styled(Icon).attrs({
   size: 20,
   color: colors.regular,
+  name: 'times',
 })``;
 
 export const EmptyMessage = styled.Text`

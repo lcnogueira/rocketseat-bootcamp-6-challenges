@@ -27,5 +27,5 @@ export const INITIAL_STATE = Immutable({
 
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_ERROR]: (state, { message }) => state.merge({ visible: true, message }),
-  [Types.HIDE_ERROR]: state => state.merge({ visible: false }),
+  [Types.HIDE_ERROR]: state => state.merge({ visible: false, message: null }),
 });
