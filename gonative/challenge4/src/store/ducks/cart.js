@@ -38,5 +38,10 @@ export const reducer = createReducer(INITIAL_STATE, {
 
     return { data: [...state.data, { ...product, quantity: 1 }] };
   },
-  [Types.REMOVE_PRODUCT]: (state, { product }) => state.merge({ data: state.data.filter(data => data.id !== product.id) }),
+  [Types.REMOVE_PRODUCT]: (state, { product }) => ({
+    data: state.data.filter(data => data.id !== product.id),
+  }),
+  [Types.UPDATE_PRODUCT]: (state, { id, quantity }) => ({
+    data: state.data.map(data => (data.id === id ? { ...data, quantity } : data)),
+  }),
 });

@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import CartActions from '~/store/ducks/cart';
 
 import { colors } from '~./styles';
 import {
@@ -37,6 +39,9 @@ class Cart extends Component {
         }),
       ),
     }).isRequired,
+    total: PropTypes.number.isRequired,
+    removeProduct: PropTypes.func.isRequired,
+    updateProduct: PropTypes.func.isRequired,
   };
 
   static navigationOptions = {
@@ -47,13 +52,10 @@ class Cart extends Component {
     },
   };
 
-  handleUpdate = () => {
-    // this,props.removeCart(ammount)
-    // Success Message
-  };
-
   render() {
-    const { cart, total } = this.props;
+    const {
+      cart, total, removeProduct, updateProduct,
+    } = this.props;
 
     return (
       <Container>
@@ -78,15 +80,12 @@ class Cart extends Component {
                       defaultValue={String(product.quantity)}
                       maxLength={2}
                       keyboardType="numeric"
-                      onChangeText={(text) => {
-                        if (/^\d+$/.test(text)) {
-                          this.handleUpdate(text);
-                        }
-                      }}
+                      onChangeText={text => updateProduct(product.id, Number(text))
+                      }
                     >
                       {product.amount}
                     </AmountInput>
-                    <DeleteButton onPress={() => {}}>
+                    <DeleteButton onPress={() => removeProduct(product)}>
                       <DeleteIcon name="times" />
                     </DeleteButton>
                   </Form>
@@ -94,8 +93,8 @@ class Cart extends Component {
               )}
             />
             <SubTotal>
-              <SubTotalText>Subtotal</SubTotalText>
-              <SubTotalPrice>{total}</SubTotalPrice>
+              <SubTotalText>Total</SubTotalText>
+              <SubTotalPrice>{total.toFixed(2)}</SubTotalPrice>
             </SubTotal>
           </Fragment>
         ) : (
@@ -106,6 +105,8 @@ class Cart extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => bindActionCreators(CartActions, dispatch);
+
 const mapStateToProps = state => ({
   cart: state.cart,
   total: state.cart.data.reduce(
@@ -114,4 +115,7 @@ const mapStateToProps = state => ({
   ),
 });
 
-export default connect(mapStateToProps)(Cart);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Cart);
