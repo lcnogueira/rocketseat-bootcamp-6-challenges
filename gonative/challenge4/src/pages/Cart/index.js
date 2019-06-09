@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { Alert } from 'react-native';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -52,10 +53,17 @@ class Cart extends Component {
     },
   };
 
+  confirmDelete = (product) => {
+    const { removeProduct } = this.props;
+
+    Alert.alert('Remove item', 'Are you sure you want to delete this item?', [
+      { text: 'Cancel' },
+      { text: 'Yes', onPress: () => removeProduct(product) },
+    ]);
+  };
+
   render() {
-    const {
-      cart, total, removeProduct, updateProduct,
-    } = this.props;
+    const { cart, total, updateProduct } = this.props;
 
     return (
       <Container>
@@ -85,7 +93,7 @@ class Cart extends Component {
                     >
                       {product.amount}
                     </AmountInput>
-                    <DeleteButton onPress={() => removeProduct(product)}>
+                    <DeleteButton onPress={() => this.confirmDelete(product)}>
                       <DeleteIcon name="times" />
                     </DeleteButton>
                   </Form>
@@ -94,7 +102,7 @@ class Cart extends Component {
             />
             <SubTotal>
               <SubTotalText>Total</SubTotalText>
-              <SubTotalPrice>{total.toFixed(2)}</SubTotalPrice>
+              <SubTotalPrice>{`R$ ${total.toFixed(2)}`}</SubTotalPrice>
             </SubTotal>
           </Fragment>
         ) : (
