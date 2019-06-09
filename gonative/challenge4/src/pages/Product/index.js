@@ -17,12 +17,17 @@ import {
   ButtonText,
 } from './styles';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import CartActions from '~/store/ducks/cart';
+
 class Product extends Component {
   static propTypes = {
     navigation: PropTypes.shape({
       getParam: PropTypes.func,
       navigate: PropTypes.func,
     }).isRequired,
+    addProduct: PropTypes.func.isRequired,
   };
 
   static navigationOptions = {
@@ -35,13 +40,16 @@ class Product extends Component {
   };
 
   addToCart = (product) => {
-    // this.props.addProduct(product)
-    // Success Message
+    const { navigation, addProduct } = this.props;
+
+    addProduct(product);
+    navigation.navigate('Cart');
   };
 
   render() {
     const { navigation } = this.props;
     const product = navigation.getParam('product');
+
     return (
       <Container>
         <ProductCard>
@@ -66,4 +74,9 @@ class Product extends Component {
   }
 }
 
-export default Product;
+const mapDispatchToProps = dispatch => bindActionCreators(CartActions, dispatch);
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(Product);

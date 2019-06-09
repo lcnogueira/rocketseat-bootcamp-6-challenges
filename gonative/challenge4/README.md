@@ -8,7 +8,7 @@
 
 ### Skills
 
-React Native, Redux, Redux Saga, Styled Components.
+React Native, Redux, Redux Saga, Redux Sauce, Redux Persist, Styled Components.
 
 ### Preview
 
