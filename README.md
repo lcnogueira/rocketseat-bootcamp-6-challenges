@@ -14,11 +14,13 @@ Here you can find all of the code I've developed for the Rocketseat Bootcamp cha
   - [First Module - Environment and Concepts](goreact/challenge1)
   - [Second Module - Github Compare App](goreact/challenge2)
   - [Third Module - Developer Marker App](goreact/challenge3)
+  - [Forth Module - Spotify Clone App](goreact/challenge4)
 
 - GoNative
   - [First Module - Architecture and Concepts](gonative/challenge1)
   - [Second Module - Githuber App](gonative/challenge2)
   - [Third Module - Github Mobile Marker App](gonative/challenge3)
+  - [Forth Module - GoCommerce App](gonative/challenge4)
 
 ## Get in touch!
 
