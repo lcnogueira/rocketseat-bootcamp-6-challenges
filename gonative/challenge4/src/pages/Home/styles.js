@@ -28,9 +28,10 @@ export const ProductItem = styled.TouchableOpacity.attrs({
   border-radius: ${metrics.baseRadius}px;
 `;
 
-export const Image = styled.Image`
+export const Image = styled.Image.attrs({
+  resizeMode: 'contain',
+})`
   height: 180px;
-  resize-mode: contain;
 `;
 
 export const Name = styled.Text`
@@ -51,4 +52,17 @@ export const Price = styled.Text`
   color: ${colors.green};
   font-weight: bold;
   margin-top: ${metrics.baseMargin / 2};
+`;
+
+export const Loading = styled.ActivityIndicator.attrs({
+  size: 'large',
+  color: `${colors.secondary}`,
+})`
+  font-weight: bold;
+`;
+
+export const LoadingContainer = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
 `;

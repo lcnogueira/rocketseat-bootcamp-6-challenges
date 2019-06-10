@@ -14,9 +14,10 @@ export const ProductCard = styled.View`
   border-radius: ${metrics.baseRadius}px;
 `;
 
-export const Image = styled.Image`
+export const Image = styled.Image.attrs({
+  resizeMode: 'contain',
+})`
   height: 300px;
-  resize-mode: contain;
 `;
 
 export const Info = styled.View`

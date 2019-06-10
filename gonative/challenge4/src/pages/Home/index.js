@@ -10,6 +10,8 @@ import {
   Name,
   Brand,
   Price,
+  Loading,
+  LoadingContainer,
 } from './styles';
 
 import Categories from '~/components/Categories';
@@ -84,20 +86,26 @@ class Home extends Component {
     return (
       <Container>
         <Categories />
-        <ProductsList
-          data={products.data}
-          keyExtractor={product => String(product.id)}
-          numColumns={2}
-          showsVerticalScrollIndicator={false}
-          renderItem={({ item: product }) => (
-            <ProductItem onPress={() => this.takeToProduct(product)}>
-              <Image source={{ uri: product.image }} />
-              <Name>{product.name}</Name>
-              <Brand>{product.brand}</Brand>
-              <Price>{`$ ${product.price}`}</Price>
-            </ProductItem>
-          )}
-        />
+        {products.loading ? (
+          <LoadingContainer>
+            <Loading />
+          </LoadingContainer>
+        ) : (
+          <ProductsList
+            data={products.data}
+            keyExtractor={product => String(product.id)}
+            numColumns={2}
+            showsVerticalScrollIndicator={false}
+            renderItem={({ item: product }) => (
+              <ProductItem onPress={() => this.takeToProduct(product)}>
+                <Image source={{ uri: product.image }} />
+                <Name>{product.name}</Name>
+                <Brand>{product.brand}</Brand>
+                <Price>{`$ ${product.price}`}</Price>
+              </ProductItem>
+            )}
+          />
+        )}
       </Container>
     );
   }
