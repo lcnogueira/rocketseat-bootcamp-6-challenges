@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://dd88ad14.ngrok.io',
+  baseURL: 'http://localhost:3000',
 });
 
 export default api;
