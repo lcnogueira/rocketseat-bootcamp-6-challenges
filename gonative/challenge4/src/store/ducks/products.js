@@ -4,7 +4,7 @@ import Immutable from 'seamless-immutable';
 /* Types & Action Creators */
 
 const { Types, Creators } = createActions({
-  loadProductsRequest: null,
+  loadProductsRequest: ['category'],
   loadProductsSuccess: ['data'],
 });
 

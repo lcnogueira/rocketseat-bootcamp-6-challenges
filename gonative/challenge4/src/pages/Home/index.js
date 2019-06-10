@@ -3,7 +3,13 @@ import PropTypes from 'prop-types';
 
 import { colors } from '~./styles';
 import {
-  Container, ProductsList, ProductItem, Image, Name, Brand, Price,
+  Container,
+  ProductsList,
+  ProductItem,
+  Image,
+  Name,
+  Brand,
+  Price,
 } from './styles';
 
 import Categories from '~/components/Categories';
@@ -29,6 +35,12 @@ class Home extends Component {
         }),
       ),
     }).isRequired,
+    categories: PropTypes.shape({
+      selectedCategory: PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+      }),
+    }).isRequired,
   };
 
   static navigationOptions = {
@@ -40,9 +52,26 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    const { loadProductsRequest } = this.props;
+    const {
+      loadProductsRequest,
+      categories: { selectedCategory },
+    } = this.props;
 
-    loadProductsRequest();
+    loadProductsRequest(selectedCategory);
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      loadProductsRequest,
+      categories: { selectedCategory },
+    } = this.props;
+    const {
+      categories: { selectedCategory: prevCategory },
+    } = prevProps;
+
+    if (prevCategory && selectedCategory !== prevCategory) {
+      loadProductsRequest(selectedCategory);
+    }
   }
 
   takeToProduct = (product) => {
@@ -74,8 +103,9 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  products: state.products,
+const mapStateToProps = ({ categories, products }) => ({
+  products,
+  categories,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(ProductsActions, dispatch);

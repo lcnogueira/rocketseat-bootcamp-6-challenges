@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  Container, CategoryBar, CategoriesList, Category, Title, Loading,
+  Container,
+  CategoryBar,
+  CategoriesList,
+  Category,
+  Title,
+  Loading,
 } from './styles';
 
 import { connect } from 'react-redux';
@@ -13,9 +18,19 @@ class Categories extends Component {
   static propTypes = {
     loadCategoriesRequest: PropTypes.func.isRequired,
     categories: PropTypes.shape({
-      id: PropTypes.number,
-      title: PropTypes.string,
+      data: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number,
+          title: PropTypes.string,
+        }),
+      ),
+      loading: PropTypes.bool,
+      selectedCategory: PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+      }),
     }).isRequired,
+    selectCategory: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -25,22 +40,30 @@ class Categories extends Component {
   }
 
   render() {
-    const { categories } = this.props;
+    const {
+      categories: { data, loading, selectedCategory },
+      selectCategory,
+    } = this.props;
 
     return (
       <Container>
         <CategoryBar>
-          {categories.loading ? (
+          {loading ? (
             <Loading />
           ) : (
             <CategoriesList
-              data={categories.data}
+              data={data}
               keyExtractor={category => String(category.id)}
               showsHorizontalScrollIndicator={false}
               horizontal
               renderItem={({ item: category }) => (
-                <Category onPress={() => {}} active={category.id === 1}>
-                  <Title active={category.id === 1}>{category.title}</Title>
+                <Category
+                  onPress={() => selectCategory(category)}
+                  active={category.id === selectedCategory.id}
+                >
+                  <Title active={category.id === selectedCategory.id}>
+                    {category.title}
+                  </Title>
                 </Category>
               )}
             />
@@ -51,9 +74,7 @@ class Categories extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  categories: state.categories,
-});
+const mapStateToProps = ({ categories }) => ({ categories });
 
 const mapDispatchToProps = dispatch => bindActionCreators(CategoriesActions, dispatch);
 
