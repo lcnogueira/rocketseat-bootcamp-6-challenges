@@ -28,7 +28,7 @@
     "nunjucks": "^3.2.0",
     "nunjucks-date-filter": "^0.1.1",
     "pg": "^7.10.0",
-    "sequelize": "^5.7.4",
+    "sequelize": "^5.15.1",
     "session-file-store": "^1.2.0"
   }
 }
